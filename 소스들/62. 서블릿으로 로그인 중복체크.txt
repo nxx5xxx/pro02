@@ -1,0 +1,68 @@
+중복체크 onclick idCheck()
+
+스크립트(제이쿼리로할것임)
+jQuery cnd사이트 가서 (https://releases.jquery.com/)
+src="https://code.jquery.com/jquery-1.12.4.js" 이것을 스크립트에 넣어줄것임
+
+
+function idCheck(){
+	 if($("#id").val()==""){
+	alert("아이디입력하숑");
+	$("#id").focuse();
+	return;
+	}
+	//파람스가 보낼데이터 객체기때문에 묶어줘야함
+	var params = { id:$("#id").val()}
+	$.ajax({
+		//url:"보낼주소"
+		url:"${path1} /IdCheck.do",
+		//type:"전송방식" (안쓰면 get 겟으로할경우 IdCheck.do?=id이런식으로달아줘야함)
+		type:"post",
+		dataType:"json",//받는데이터
+		data:params,
+		//처리가 성공하면 success로 데이터가 온다
+		success:function(result){
+			//console.log(result); --F12눌럿을때 거기있는 콘솔창에 출력해보는것
+			var idChk = result.result;
+			if(idChk==false){
+			$("#idck").val("noIdchk");
+			$("$msg").html("사용불가능한아이디")
+			}else if(idChk == true){
+			idck . val yes
+			}else {
+		$ msg .html ("아이디가 확인되지 않았습니다")
+			}
+		}
+	});
+}
+
+-----idCheck.do
+service (json은 가급적이면 service로)
+	String id = request.getParameter("id");
+	UserDAO dao = new U~
+	int cnt = dao.idcheck(id);
+	boolean result = false;
+	if(cnt>0){
+		result=false;
+	}else{
+		result=true;
+	}
+	//제이손 오브젝트
+	//org.jason으로 써야함 //sf붙은건 스프링에서 써먹음
+	JSONObject json = new JSONObject();
+	json.put("result", result); // 제이손은 맵이다
+	//서블릿에서 아웃객체만들때
+	PrintWriter out = response.getWriter();
+	out.println(json.toString());
+
+public int idcheck(String id){
+	int cnt = 0;
+	t{
+	조회문
+	if(rs.next()){
+	 cnt=1;
+	}
+
+c{}
+	return cnt;
+}

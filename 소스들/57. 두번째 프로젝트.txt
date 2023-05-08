@@ -1,0 +1,86 @@
+com.~~~.dto
+
+aes256 - 암호화
+액티베이션, 크립토
+
+SMTP
+import javax.mail.Authenticator;
+import javax.mail.PasswordAutentication;
+
+
+gmail도있음
+액티베이션
+cosjar
+
+pro02/WebContent/WEB-INF/classes >내가만든 java > .class
+pro02/WebContent/WEB-INF/lib > 외부라이브러리 jar
+
+web.xml 에러페이지
+
+이미지파일편집기
+json
+
+메인콘트롤러
+com.~.controlloer
+>New>서블릿 > 이름Main > service체크 (겟인지 포스트인지 구분못하니까) >
+
+
+Main서블릿에서 어플리케이션 객체를 만들어 쓸것임
+@WebServlet("/") //메인지우고
+HttpServlet{
+	private static final long serial~~~=1L;
+	protected ~~~(Http서블릿 리퀘스트,리퀘스트 throws냅두고
+	String author="강아지";
+
+	//홈 디렉토리 잡기
+	//어플리케이션객체
+	ServletContext application = request.getServletContext();
+	//경로를 설정
+	String realPath = request.getSession().getServletContext().getRealPath("/";
+	application.SetAttribute("realPath", realPath);
+
+	//메인페이지 포워딩
+	request.setAttribute("author",author);
+//여기서 리퀘스트 디스패쳐를 해야지만 WEB-INF안에 접속가능함
+//	RequestDispatcher  view = request.getReqeustDispatcher("보낼위치");
+	RequestDispatcher  view = request.getReqeustDispatcher("/WEB-INF/index.jsp");
+	view.forward(request, response);
+
+}
+
+이 작업은 무조건 직접접근이 불가능하고 컨트롤러를 통해 들어올수있게끔 하는 작업이다
+--즉, 보안때문에 서블릿을 쓰는것임 
+--인덱스페이지 Web-INF에 만들기 - 이것은 외부에서 접근을 못하는폴더임
+제작자 : ${author}
+
+--img폴더는 WebContent에 만들어도된다
+
+헤더와 푸터는 webcontent폴더에
+
+--헤더
+header에서 패스를 잡을때 
+el로
+<c:set var="path" value="${pageContext.request.contextPath }" />
+또는
+<c:set var="path" value="${realPath}" />
+세션아이디불러오기
+String sid="";
+if(session !=null) sid = (String) session.getAttribute("sid");
+
+<c:if test="${empty sid}"> 세션아이디가 빈칸이라면 (로그인을 안했다면)
+	로그인 회원가입
+</c:if>
+<c:if test="${!empty sid}">
+	마이페이지 장바구니 로그아웃
+</c:if>
+<c:if test="${sid=='admin'}">
+	관리자메뉴
+</c:if>
+
+뷰부분 = jsp파일
+
+일요일까지
+회원기능 , 게시판기능 만들어오기
+-파일업로드 , 이메일기능 , 보드프로그램은 다음주에 알려줌
+주소api , 결제 api이용하는방법 등을 알려줄거임
+

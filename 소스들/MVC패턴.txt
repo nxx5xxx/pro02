@@ -1,0 +1,10 @@
+MVC패턴
+View			Controller		Model
+브라우저>요청		GetNoticeListCtrl>요청	NoticeDAO>요청		JDBC>ㅇ	Orcle Xe 11g(DB)
+공지사항메뉴선택		(브라우저에 띄어지는 주소)<notilist(호출)		<(rs)	JDBC	<(ResultSet)
+			NoticeList.do		메소드:noticeListAll()	
+(실제포워드되는데이터)	<notilist
+NoticeList.do
+noticeList.jsp
+
+-이부분이 뷰 -

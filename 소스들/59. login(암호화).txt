@@ -1,0 +1,52 @@
+//커런트는 서버에 안담김
+//세션도 서버에 담기는 쿠키라고 생각해야한다 ===메모리를 많이먹음
+
+로그인페이지로 보내기
+doGet으로 생성
+스트링msg로 메세지 request.setAttribute
+해서 아이디와 비밀번호 입력하라고함
+
+-------------------------
+비밀번호 암호화하기
+--암호화 테스트모듈
+
+com.okbs.service
+->AES256.java이 암호화모듈이다
+여기담긴 암호화패턴에는 AES256 과 MD5와 SHA-256이있다
+암호화만있고 복호화는 존재하지않는다
+(비밀번호 입력할때도 똑같이 암호화해서 보낸다)
+
+-AES256는 암호화,복호화가 가능하다 
+encryptAES256-암호화 , decryptAES256-복호화 
+---------------------------------------
+기능처리를 하기위해 테스트페이지를 만든다
+
+com.myshop.test
+AES256test class (실행가능하게) 만들고
+데이터아무거나 넣어본다( 
+String testText = "123456";
+String key = "%04x"; //16진수로 만들라는뜻 
+//%를 꼭 안넣어도 되지만 %를 안넣었을경우 오류가 발생할수도있기때문에 넣어야함 
+
+sysout ( MD5:testText , AES256.md5(testText)->뜨로우나 트라이캐치 
+sysout( sha256 : testText , AES256.sha256(testText)
+
+String encText = AES256.encryptAES256( msg , key ); //msg는 데이터라는뜻
+->> AES256.encryptAES256( testText , key )
+sysou( aes256 , encText )
+=처음부터  sysou( aes256 , AES256.encryptAES256( testText , key ) ) 해도되지만 복호화도 보여주기위해
+String desText = AES256.decryptAES256(encText, key);
+sysou("des" + desText)
+
+------------------------------
+로그인하는 서블릿 Pro 
+
+--memberDAO
+이 안에서 key를넣어 암호화해서 대입하거나 복호화해서 대입해본다
+
+--------------------------
+로그아웃처리
+서블릿에서
+Http.Session ses = request.getSession();
+ses.invaili~~~();
+

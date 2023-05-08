@@ -1,0 +1,15 @@
+주소 api
+폼태그 밑에
+<button id="post_btn" onclick="findAdd()"
+<script>
+function findAddr(){
+	
+}
+
+//.zonecode;
+//.roadAddr
+//.jibunAddr
+</script>
+//<script src="다음api주소"></>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+이 세개는 정해진값임

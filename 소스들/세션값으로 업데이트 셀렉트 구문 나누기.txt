@@ -1,0 +1,16 @@
+게시판보기 NoticeList.do = GetNoticeListCtrl.java >notiList.jsp
+글자세히보기 GetNotice.do?=idx =GetNotice.java > noticeDetail.jsp
+글자세히보기를 하면 NOTICE_READCOUNT_UPDATE에서 cnt를 +1씩 증가시킨다
+
+세션값 받아오기
+		HttpSession session = request.getSession();
+		 System.out.println(session.getAttribute("dswitch"));
+서블릿에서 세션값으로 받아온거 형변환할필요 없음
+
+세션값으로 업데이트로 나뉘는거 연구중에끔 
+
+	<a href="${path1 }/NoticeList.do">목록으로</a>
+	<a href="${path1 }/GoUpdateNotice.do?idx=${note.idx }"><%session.setAttribute("dswitch", 123); %>글 수정</a>
+
+		HttpSession session = request.getSession();
+		 System.out.println(session.getAttribute("dswitch"));

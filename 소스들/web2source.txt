@@ -1,0 +1,23 @@
+10001 KBS 10001 신용카드 123-1234-123456 25000 20230419
+to_char(컬럼명 , YYYY-MM-DD) as 머시기
+
+ERD테이블 만들기, 클래스다이어그램 만들기
+
+두번째 프로젝트 반영할 상품 사진을 비롯한 아이콘 파비콘 폰트 스타일 등 모든 데이터를 수집하여 저장한다
+
+파비콘 nxx5xxx_img에있음
+
+
+폰트
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;900&family=Open+Sans:wght@300;600&family=Roboto&display=swap" rel="stylesheet">
+
+font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+
+
+
+
