@@ -41,7 +41,7 @@
     <div class="fix_menubar">
         <ul>
             <li><a href="${path }" class="item0">홈</a></li>
-            <li><a href="" class="item1">스위치메뉴</a></li>
+            <li><input type="checkbox" id="category" name="category" class="cate_chkbox" style="display:none"><label for="category" class="item1">스위치메뉴</label></li>
             <li><a href="${path }/NoticeList.do" class="item2">게시판</a></li>
             <li><a href="" class="item3">장바구니</a></li>
             <li><a href="" class="item4">주문내역</a></li>

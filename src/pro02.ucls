@@ -121,8 +121,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="com.okbs.controlloer.LoginCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/LoginCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="17" language="java" name="com.okbs.controlloer.user.LoginCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/LoginCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="695" y="1277"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -130,8 +130,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="com.okbs.controlloer.MyPageUserCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/MyPageUserCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="18" language="java" name="com.okbs.controlloer.user.MyPageUserCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/MyPageUserCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="99" y="1278"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -139,8 +139,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="com.okbs.controlloer.GoMyPageUserModifyCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/GoMyPageUserModifyCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="19" language="java" name="com.okbs.controlloer.user.GoMyPageUserModifyCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/GoMyPageUserModifyCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1288" y="1154"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -148,8 +148,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="com.okbs.controlloer.UserInsertCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/UserInsertCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="20" language="java" name="com.okbs.controlloer.user.UserInsertCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/UserInsertCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="397" y="1154"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -157,8 +157,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="com.okbs.controlloer.UpdateNoticeCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/UpdateNoticeCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="21" language="java" name="com.okbs.controlloer.notice.UpdateNoticeCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/notice/UpdateNoticeCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="695" y="1154"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -166,8 +166,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="com.okbs.controlloer.DeleteNoticeCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/DeleteNoticeCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="22" language="java" name="com.okbs.controlloer.notice.DeleteNoticeCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/notice/DeleteNoticeCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="996" y="1154"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -175,8 +175,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="com.okbs.controlloer.MyPageModifyCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/MyPageModifyCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="23" language="java" name="com.okbs.controlloer.user.MyPageModifyCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/MyPageModifyCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="397" y="1277"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -184,8 +184,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="com.okbs.controlloer.GotermsUser" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/GotermsUser.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="24" language="java" name="com.okbs.controlloer.user.GotermsUser" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/GotermsUser.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1288" y="1401"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -193,8 +193,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="com.okbs.controlloer.GoUpdateNoticeCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/GoUpdateNoticeCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="25" language="java" name="com.okbs.controlloer.notice.GoUpdateNoticeCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/notice/GoUpdateNoticeCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="996" y="1275"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -202,8 +202,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="com.okbs.controlloer.UserCheckCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/UserCheckCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="26" language="java" name="com.okbs.controlloer.user.UserCheckCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/UserCheckCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1288" y="1275"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -211,8 +211,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="com.okbs.controlloer.LogoutCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/LogoutCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="27" language="java" name="com.okbs.controlloer.user.LogoutCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/LogoutCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="98" y="1401"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -229,8 +229,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="com.okbs.controlloer.UserDeleteCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/UserDeleteCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="29" language="java" name="com.okbs.controlloer.user.UserDeleteCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/user/UserDeleteCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="695" y="1401"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -238,8 +238,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="com.okbs.controlloer.InsertNoticeCtrl" project="pro02" 
-    file="/pro02/src/com/okbs/controlloer/InsertNoticeCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="30" language="java" name="com.okbs.controlloer.notice.InsertNoticeCtrl" project="pro02" 
+    file="/pro02/src/com/okbs/controlloer/notice/InsertNoticeCtrl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="992" y="1401"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

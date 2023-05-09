@@ -19,7 +19,8 @@
         .fix_menubar {position: fixed; right: 40px; top: 130px; z-index:9999;}
         .fix_menubar > ul>li>a {background-color: white;display: block;width: 76px;height: 76px;text-indent:-9999px; overflow: hidden; background-size: 76px; background-position: center center; }
         .fix_menubar>ul>li>a.item0 {background-image: url("img/rightbar/home.png"); border: 1px solid black;}
-        .fix_menubar>ul>li>a.item1 {background-image: url("img/rightbar/swmenu.png"); border: 1px solid black;}
+        .fix_menubar > ul>li>label {background-color: white;display: block;width: 76px;height: 76px;text-indent:-9999px; overflow: hidden; background-size: 76px; background-position: center center; margin:0; cursor: grab;}
+        .fix_menubar>ul>li>label.item1 {background-image: url("img/rightbar/swmenu.png"); border: 1px solid black;}
         .fix_menubar>ul>li>a.item2 {background-image: url("img/rightbar/notice.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item3 {background-image: url("img/rightbar/basket.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item4 {background-image: url("img/rightbar/truck.png");border:1px solid black;}

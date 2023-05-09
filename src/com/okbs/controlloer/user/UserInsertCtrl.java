@@ -1,4 +1,4 @@
-package com.okbs.controlloer;
+package com.okbs.controlloer.user;
 
 import java.io.IOException;
 
