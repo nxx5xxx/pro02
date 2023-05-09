@@ -44,33 +44,42 @@
 # 프로젝트 설계
 ## 개념적 설계 (유스케이스)
 - 유스케이스
+
 ![개념적 설계](./readmeimg/usecase.PNG "유즈케이스")
 
 ---
 ## 논리적 설계 (검증 표)
 - 논리 검증 체크리스트
+
 ![논리적 설계](./readmeimg/logiccheck.PNG "논리검증 체크리스트")
 
 - 논리적 ERD
+
 ![논리적 설계](./readmeimg/logicERD.PNG "논리적 ERD")
 
 
 ---
 ## 물리적 설계
 - 데이터베이스 ERD
+
 ![물리적 설계](./readmeimg/dataBaseERD.PNG "데이터베이스 ERD")
 
 ---
 ## 클래스 설계
 - 클래스 다이어 그램
+
 ![물리적 설계](./readmeimg/classDiagram.PNG "데이터베이스 ERD")
 
 ---
 ## 시퀀스 설계
 - 시퀀스 설명
+
 ![시퀀스 설계](./readmeimg/jungboERD1.PNG "시퀀스 설명")
+
 ![시퀀스 설계](./readmeimg/jungboERD2.PNG "시퀀스 설명")
+
 ![시퀀스 설계](./readmeimg/jungboERD3.PNG "시퀀스 설명")
+
 ![시퀀스 설계](./readmeimg/jungboERD4.PNG "시퀀스 설명")
 
 ---
