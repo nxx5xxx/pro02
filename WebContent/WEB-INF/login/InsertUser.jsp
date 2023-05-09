@@ -10,38 +10,43 @@
 <head>
 <meta charset="UTF-8">
 
-<title>메인페이지</title>
+<title>회원가입</title>
 <%@ include file="/common.jsp" %>
 <style>
-
+.table_wrap {display : block; text-align:center;  margin-bottom:5vw;}
+table{width:65vw ; margin: 0 auto; font-size:2vmin;}
+th {text-align: right; border-bottom:1px solid grey}
+td {text-align: left; border-bottom:1px solid grey}
+th,td {padding:1.1vh}
+input{width:100%}
 </style>
 
 </head>
 <body>
 <%@ include file="/header.jsp" %>
+<div class="wrap_bt">
 	<h2>제작자 : ${author }</h2>
-	<a href="${path1 }/admin/memberList.jsp">전체고객목록보기</a>
-	<a href="${path1 }/board/board.jsp">전체게시글보기</a>
-	
+
 
   <a href="${path1 }/NoticeList.do">공지사항</a>
 <hr>
+<div class="table_wrap">
 	<form action="${path1 }/UserInsert.do" method="post" onsubmit="return insertCheck(this)">
 		<table>
 			<tr>
 				<th><label for="id">아이디</label></th>
-				<td><input type="text" name="id" id="id" placeholder="아이디" required><input type="button" value="중복체크" style="width:30%" onclick="idCheck()">
+				<td><input type="text" name="id" id="id" style="width:70%" placeholder="아이디" pattern="^[a-z0-9]{4,16}" maxlength="15" ><input type="button" value="중복체크" style="width:30%" onclick="idCheck()">
 				<input type="hidden" name="idck" id="idck" value="noIdCheck">
 				<p id="msg"></p>
 				</td>
 			</tr>
 			<tr>
 				<th><label for="pw">비밀번호</label></th>
-				<td><input type="text" name="pw" id="pw" placeholder="비밀번호" required></td>
+				<td><input type="password" name="pw" id="pw" placeholder="비밀번호" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{3,15}$" maxlength="16"></td>
 			</tr>
 			<tr>
 				<th><label for="pw">비밀번호 확인</label></th>
-				<td><input type="text" name="pw2" id="pw2" placeholder="비밀번호 확인" required></td>
+				<td><input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{3,15}$" maxlength="16"></td>
 			</tr>
 			<tr>
 				<th><label for="name">이름</label></th>
@@ -67,7 +72,7 @@
 			</tr>
 			<tr>
 				<td><input type="reset" value="취소" style="width:100%"></td>
-				<td><input type="submit" value="가입" style="width:70%"></td>
+				<td><input type="submit" value="가입" style="width:100%"></td>
 			</tr>
 		</table>
 	</form>
@@ -95,7 +100,7 @@
 					$("#msg").html("다른 아이디를 입력하세요")
 				}else if(idChk==true){
 					$("#idck").val("yes");
-					$("#msg").html("사용 가능한 아이디")
+					$("#msg").html("중복되는 아이디가 없습니다")
 				}else{
 					$("#msg").html("다시 시도 바랍니다")
 				}
@@ -107,6 +112,16 @@
 		
 	}
 	function insertCheck(x){
+		if(x.pw.value==""){
+			alert("비밀번호를 입력하지 않았습니다")
+			x.pw.focus();
+			return false;
+		}
+		if(x.pw.value.length<5){
+			alert("비밀번호를 5글자 이상 입력해주세요")
+			x.pw.focus();
+			return false;
+		}
 		if(x.pw.value!=x.pw2.value){
 			alert("비밀번호가 일치하지 않습니다")
 			x.pw.focus();
@@ -135,5 +150,8 @@
 	}
 	</script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	</div>
+</div>
+<%@ include file="/footer.jsp" %>
 </body>
 </html>

@@ -10,24 +10,30 @@
 <head>
 <meta charset="UTF-8">
 
-<title>마이페이지 수정페이지</title>
+<title>${id}님 수정페이지</title>
 <%@ include file="/common.jsp" %>
 <style>
-.yesdel {display:none;}
+.yesdel,.delon {display:none;}
 .delon:checked ~ .yesdel {display:block;}
-
+.table_wrap {display : block; text-align:center;  margin-bottom:5vw;}
+table{width:65vw ; margin: 0 auto; font-size:2vmin;}
+th {text-align: right; border-bottom:1px solid grey}
+td {text-align: right; border-bottom:1px solid grey}
+th,td {padding:1.1vh}
+input{width:100%}
 </style>
 
 </head>
 <body>
 <%@ include file="/header.jsp" %>
+<div class="wrap_bt">
 	<h2>제작자 : ${author }</h2>
-	<a href="${path1 }/admin/memberList.jsp">전체고객목록보기</a>
-	<a href="${path1 }/board/board.jsp">전체게시글보기</a>
-	
+
 
   <a href="${path1 }/NoticeList.do">공지사항</a>
 <hr>
+
+<div class="table_wrap">
 <c:if test="${!empty alert }">
 	<p>${alert }</p>
 </c:if>
@@ -61,9 +67,9 @@
 				<th><label for="addr">주소</label></th>
 				<td>
 				<h6>${user.address }</h6><br>
-				<input type="text" name="postcode" id="postcode" value="${postCode }" /><br>
-				<input type="text" name="addr1" id="addr1" value="${addr1 }" /><br>
-				<input type="text" name="addr2" id="addr2" value="${addr2 }" /><br>
+				<input type="text" name="postcode" id="postcode" placeholder="우편번호" value="${postCode }" readonly/><br>
+				<input type="text" name="addr1" id="addr1" placeholder="기본주소" value="${addr1 }" readonly/><br>
+				<input type="text" name="addr2" id="addr2" placeholder="상세주소" value="${addr2 }" /><br>
 				<input type="button" name="addr_btn" id="addr_btn" onclick="findAddr()" value="주소검색">
 				</td>
 			</tr>
@@ -72,8 +78,8 @@
 				<td><input type="text" name="email" id="email" value="${user.email }"></td>
 			</tr>
 			<tr>
-				<td><input type="reset" value="초기화" style="width:100%"></td>
-				<td><input type="submit" value="수정" style="width:50%"><input type="button" value="뒤로가기" onclick="location.href='${path1}/MyPageUser.do?id=${id }'" style="width:50%">
+				<td style="padding-right:0"><input type="reset" value="초기화" style="width:100%"></td>
+				<td style="padding-left:0"><input type="submit" value="수정" style="width:50%"><input type="button" value="뒤로가기" onclick="location.href='${path1}/MyPageUser.do?id=${id }'" style="width:50%">
 				</td>
 			</tr>
 			<tr>
@@ -113,5 +119,8 @@
 	}
 	</script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	</div>
+</div>
+<%@ include file="/footer.jsp" %>
 </body>
 </html>

@@ -19,10 +19,11 @@ public class AES256Test {
 		String testPw = "1234";
 		String key = "%04x";
 		//%x 16진수 ->%와 x사이에 숫자넣으면 접두사와함께 출력됨 그방식을 이용한 16진수 출력방식 
-		
+		//MD5방식
 		System.out.println("MD5 : " + testPw +" 암호화 :" + AES256.md5(testPw));
+		//sha256방식
 		System.out.println("sha256 : " + testPw + " 암호화 : " + AES256.sha256(testPw));
-		
+
 		//AES256방식
 		String encText = AES256.encryptAES256(testPw, key);
 		System.out.println("AES256 encText (암호화) : "+encText);
@@ -34,11 +35,11 @@ public class AES256Test {
 		String admindes = AES256.decryptAES256(encText, key);
 		System.out.println("AES256 desText (복호화) : "+admindes);
 		
-		System.out.println("kim (암호화) : "+AES256.encryptAES256("2345", key));
-		System.out.println("lee (암호화) : "+AES256.encryptAES256("3456", key));
-		System.out.println("park (암호화) : "+AES256.encryptAES256("4567", key));
-		System.out.println("choi (암호화) : "+AES256.encryptAES256("5678", key));
-		System.out.println("son (암호화) : "+AES256.encryptAES256("6789", key));
+		String test2 = AES256.encryptAES256("2345", key); 
+		System.out.println("2345 (암호화) : "+test2);
+		String test2Dec = AES256.decryptAES256(test2, key);
+		System.out.println("2345암호화 된것을 복호화 : "+test2Dec);
+		
 		
 	}
 

@@ -13,19 +13,24 @@
 <title>마이페이지</title>
 <%@ include file="/common.jsp" %>
 <style>
-
+.table_wrap {display : block; text-align:center;  margin-bottom:5vw;}
+table{width:65vw ; margin: 0 auto; font-size:2vmin;}
+th {text-align: right; border-bottom:1px solid grey}
+td {text-align: left; border-bottom:1px solid grey}
+th,td {padding:1.1vh}
+input{width:100%}
 </style>
 
 </head>
 <body>
 <%@ include file="/header.jsp" %>
+<div class="wrap_bt">
 	<h2>제작자 : ${author }</h2>
-	<a href="${path1 }/admin/memberList.jsp">전체고객목록보기</a>
-	<a href="${path1 }/board/board.jsp">전체게시글보기</a>
-	
 
   <a href="${path1 }/NoticeList.do">공지사항</a>
 <hr>
+	<div class="table_wrap">
+
 		<table>
 			<tr>
 				<th>아이디</th>
@@ -64,5 +69,8 @@
 				<td><input type="button" value="수정" onclick="location.href='${path1 }/GoMyPageUserModify.do?id=${id}'" style="width:100%"></td>
 			</tr>
 		</table>
+		</div>
+</div>
+<%@ include file="/footer.jsp" %>
 </body>
 </html>

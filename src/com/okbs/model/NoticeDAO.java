@@ -90,15 +90,15 @@ public class NoticeDAO {
 		
 	}
 	
-	public void insertNotice(String title,String content,String author,String fileName){
+	public void insertNotice(Notice notice){
 		int sw=0;
 		try{
 			conn = Oracle11.getConnection();
 			pstmt = conn.prepareStatement(Oracle11.NOTICE_INSERT);
-			pstmt.setString(1, title);
-			pstmt.setString(2, content);
-			pstmt.setString(3, author);
-			pstmt.setString(4, "data/"+fileName);
+			pstmt.setString(1, notice.getTitle());
+			pstmt.setString(2, notice.getContent());
+			pstmt.setString(3, notice.getAuthor());
+			pstmt.setString(4, "data/"+notice.getFile1());
 			sw=pstmt.executeUpdate();
 			if(sw>0){
 				System.out.println("Notice등록 완료");
@@ -116,25 +116,25 @@ public class NoticeDAO {
 		Oracle11.close(pstmt, conn);
 	}
 	
-	public void updateNotice(int idx, String title,String content, String fileName ){
+	public void updateNotice(Notice notice){
 		int sw = 0;
 		try {
 			conn = Oracle11.getConnection();
-			if(fileName!=null){
+			if(notice.getFile1()!=null){
 			pstmt = conn.prepareStatement(Oracle11.NOTICE_UPDATE);
-			pstmt.setString(1, title);
-			pstmt.setString(2, content);
-			pstmt.setString(3, "data/"+fileName);
-			pstmt.setInt(4, idx);
+			pstmt.setString(1, notice.getTitle());
+			pstmt.setString(2, notice.getContent());
+			pstmt.setString(3, "data/"+notice.getFile1());
+			pstmt.setInt(4, notice.getIdx());
 			}else{
 				pstmt = conn.prepareStatement(Oracle11.NOTICE_UPDATE_NOTFILE);
-				pstmt.setString(1, title);
-				pstmt.setString(2, content);
-				pstmt.setInt(3, idx);
+				pstmt.setString(1, notice.getTitle());
+				pstmt.setString(2, notice.getContent());
+				pstmt.setInt(3, notice.getIdx());
 			}
 			sw = pstmt.executeUpdate();
 			if(sw>0){
-				System.out.println(idx + "번 글 수정 완료");
+				System.out.println(notice.getIdx() + "번 글 수정 완료");
 			}else{
 				System.out.println("수정 에러");
 			}

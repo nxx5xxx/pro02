@@ -26,4 +26,8 @@
         .fix_menubar>ul>li>a.item5 {background-image: url("img/rightbar/arrow_up.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item6 {background-image: url("img/rightbar/arrow_down.png");border:1px solid black;transition-duration: 1s;}
 
+		/* 푸터와 거리벌리기 */
+        .wrap_bt {height : auto; min-height : 90% ;}
         
+        /* 인풋박스 색상 */
+        input,button {background-color:white; border: 1px solid black}

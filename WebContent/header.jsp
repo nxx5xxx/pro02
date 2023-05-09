@@ -31,7 +31,7 @@
 				</c:when>
 				<c:otherwise>
                     <li><a href="${path }/GoLogin.do">로그인</a></li>
-                    <li><a href="${path }/GoInsertUser.do">회원가입</a></li>
+                    <li><a href="${path }/GotermsUser.do">회원가입</a></li>
 				</c:otherwise>
 				</c:choose>
 		</ul>

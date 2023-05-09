@@ -18,11 +18,10 @@ public class Oracle11 {
 		final static String NOTICE_UPDATE_NOTFILE = "update notice set title=?,content=? where idx=?";
 		final static String NOTICE_DELETE = "delete from notice where idx=?";
 		
-		//final static String USER1_LOGIN = "select * from user1 where id=? and pw=?";
+		final static String USER1_ONE_SELECT = "select * from user1 where id=?";
 		final static String USER1_INSERT = "insert into user1 values(?,?,?,?,?,?,default,default)";
 		final static String USER1_MYPAGE_MODIFY = "update user1 set pw=?,name=?,tel=?,addr=?,email=? where id=?";
 		final static String USER1_DELETE = "delete from user1 where id=? ";
-		final static String USER1_ONE_SELECT = "select * from user1 where id=?";
 		final static String USER1_UPDATE_POINT ="update user1 set point=point+1 where id=?";
 		
 	//연결해주는 연결자

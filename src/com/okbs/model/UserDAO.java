@@ -54,22 +54,22 @@ public class UserDAO {
 		Oracle11.close(pstmt, conn);
 	}
 	//
-	public void insertUser(String id,String pw, String name,String tel, String addr,String email){
+	public void insertUser(User1 user){
 		int sw =0 ;
 		try {
 			conn = Oracle11.getConnection();
 			pstmt=conn.prepareStatement(Oracle11.USER1_INSERT);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
-			pstmt.setString(3, name);
-			pstmt.setString(4, tel);
-			if(addr!=""){
-				pstmt.setString(5, addr);
+			pstmt.setString(1, user.getId());
+			pstmt.setString(2, user.getPw());
+			pstmt.setString(3, user.getName());
+			pstmt.setString(4, user.getTel());
+			if(user.getAddress()!=null){
+				pstmt.setString(5, user.getAddress());
 			}else{
 				pstmt.setString(5, "-");
 			}
-			if(email!=""){
-				pstmt.setString(6, email);	
+			if(user.getEmail()!=""){
+				pstmt.setString(6, user.getEmail());	
 			}else{
 				pstmt.setString(6, "-");
 			}

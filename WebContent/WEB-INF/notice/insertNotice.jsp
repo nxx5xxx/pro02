@@ -10,9 +10,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항쓰기</title>
 <%@ include file="/common.jsp" %>
 <style>
+textarea {resize : none; width:100%}
+.table_wrap {display : block; text-align:center;  margin-bottom:5vw;}
+table{width:65vw ; margin: 0 auto; font-size:2vmin;}
+th {text-align: right; border-bottom:1px solid grey}
+td {text-align: right; border-bottom:1px solid grey}
+th,td {padding:1.1vh}
+input{width:100%}
 </style>
 
 </head>
@@ -29,7 +36,9 @@ enctype는 인코딩 타입이라는의미
 <input type="file" name="file" id="file1" >
 accept="*.pdf, *png, *.jpg" 이걸쓸경우  이파일들만 가능하다는 의미 -->
 <body>
-	
+<div class="wrap_bt">
+	<div class="table_wrap">
+	<h1>공지사항</h1>
 	<form action="${path1 }/InsertNotice.do" method="post" enctype="multipart/form-data">
 		<table>
 		<tr>	
@@ -38,7 +47,7 @@ accept="*.pdf, *png, *.jpg" 이걸쓸경우  이파일들만 가능하다는 의
 		</tr>
 		<tr>
 			<th><label for="content">내용</label></th>
-			<td><textarea rows="10" cols="100" name="content" id="content" placeholder="내용을 입력하세요"></textarea></td>
+			<td><textarea rows="10" name="content" id="content" placeholder="내용을 입력하세요"></textarea></td>
 		</tr>
 		<tr>
 			<th><label for="file1">첨부파일</label></th>
@@ -49,10 +58,13 @@ accept="*.pdf, *png, *.jpg" 이걸쓸경우  이파일들만 가능하다는 의
 			<td><input type="text" name="author" id="author" value="${id }" readonly></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="등록"></td>
-			<td><input type="reset" value="취소"></td>
+			<td><input type="button" value="목록으로" onclick="location.href='${path1 }/NoticeList.do'"></td>
+			<td><input type="reset" value="초기화"><input type="submit" value="등록"></td>
 		</tr>
 		</table>
 	</form>
+	</div>
+</div>
+<%@ include file="/footer.jsp" %>
 </body>
 </html>
