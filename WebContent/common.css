@@ -26,6 +26,12 @@
         .fix_menubar>ul>li>a.item4 {background-image: url("img/rightbar/truck.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item5 {background-image: url("img/rightbar/arrow_up.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item6 {background-image: url("img/rightbar/arrow_down.png");border:1px solid black;transition-duration: 1s;}
+	
+		
+		
+		.sub {display :none;}
+		.sub > ul{float:left ; padding:0 ; position:fixed ; transform : translate(-100%,-76px);}
+		.fix_menubar > ul>li>.cate_chkbox:checked ~ .sub {display:block}
 
 		/* 푸터와 거리벌리기 */
         .wrap_bt {height : auto; min-height : 90% ;}

@@ -5,6 +5,9 @@ public class Product {
 	private	int price;
 	private	String pdesc;
 	private	int pamount;
+	private String ccode;
+	private String img;
+	private String img2;
 	public String getPcode() {
 		return pcode;
 	}
@@ -34,6 +37,24 @@ public class Product {
 	}
 	public void setPamount(int pamount) {
 		this.pamount = pamount;
+	}
+	public String getCcode() {
+		return ccode;
+	}
+	public void setCcode(String ccode) {
+		this.ccode = ccode;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public String getImg2() {
+		return img2;
+	}
+	public void setImg2(String img2) {
+		this.img2 = img2;
 	}
 	
 }

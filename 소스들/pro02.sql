@@ -29,13 +29,20 @@ insert into user1 values('son','6789','손손손','01066666666','경기도 의�
 CREATE TABLE PRODUCT(
     PCODE CHAR(5) PRIMARY KEY,PNAME VARCHAR2(100) NOT NULL,PRICE NUMBER NOT NULL,
     PDESC VARCHAR2(300),PAMOUNT NUMBER NOT NULL);
-    
+
+alter table product add ccode varchar2(8) default 0100 NOT NULL;
+alter table porduct modify ccode varchar2(8) NOT NULL;
+commit;
+select * from product;
+create sequence pcode start with 30011;
 insert into product values('30001','티어스 오브더 킹덤',74800,'젤다의 전설',25	);
 insert into product values('30002','포트리스',39800,'닌텐도스위치',8	);
 insert into product values('30003','원더풀라이프',44100,'목장이야기',3	);
 insert into product values('30004','스플래툰3',25000,'익스팬션 패스',13	);
 insert into product values('30005','포켓몬스터',25900	,'스칼랫',22	);
 insert into product values('30006','마계전기 다스가이아',54800,'5/24출고예정',17	);
+    
+    
     
 select * from product;
 
@@ -156,17 +163,22 @@ CNT NUMBER default 0,foreign key(author) references user1(id));
 
 commit;
 
-create table category(ccode VARCHAR2(8) primary key, cname VARCHAR2(50) not null, cgroup VARCHAR2(50) not null);
+drop table category;
 
-insert into category values('0101','닌텐도스위치','액션');
+create table category(ccode VARCHAR2(8) primary key, cgroup VARCHAR2(50) not null, cname VARCHAR2(50) not null );
+
+insert into category values('0100','닌텐도스위치','ETC');
+insert into category values('0101','닌텐도스위치','ACTION');
 insert into category values('0102','닌텐도스위치','FPS');
 insert into category values('0103','닌텐도스위치','RPG');
 
-insert into category values('0201','플레이스테이션','액션');
+insert into category values('0200','플레이스테이션','ETC');
+insert into category values('0201','플레이스테이션','ACTION');
 insert into category values('0202','플레이스테이션','FPS');
 insert into category values('0203','플레이스테이션','RPG');
 
-insert into category values('0301','엑스박스','액션');
+insert into category values('0300','엑스박스','ETC');
+insert into category values('0301','엑스박스','ACTION');
 insert into category values('0302','엑스박스','FPS');
 insert into category values('0303','엑스박스','RPG');
 
@@ -174,5 +186,31 @@ insert into category values('0401','기타','조이스틱');
 insert into category values('0402','기타','주변기기');
 insert into category values('0403','기타','완구');
 
+insert into category values('0000','모든제품','-');
+
 select * from category;
 commit;
+
+select * from notice;
+select * from product;
+alter table product add img2 varchar(1000);
+update product set ccode='0101';
+commit;
+desc product;
+update product set IMG='img/proimg/30001.jpg';
+select * from product where ccode like '01'||'%';
+-- '*' MSSQL에서 사용됨
+
+--CNAME이 키 안에들어있는것이 값 
+-- 차, 바차,넘버,바차,넘버,바차,바차
+insert into product values('30007','MLB 더 쇼 23',67800,'SIE 샌디에이고 스튜디오',50,'0200','');
+insert into product values('30008','원피스 오디세이',69800,'반다이남코 엔터테인먼트',21,'0201','');
+
+insert into product values('30009','권바(QANBA) Q1 조이스틱 블랙',79400,'SWITCH/PS3/PC',100,'0401','');
+insert into product values('30010','포켓몬 피카츄 마우스 패드',4990,'Dongguan Lingjie Electronics Technology',0,'0402','');
+
+select * from category;
+
+commit;
+
+

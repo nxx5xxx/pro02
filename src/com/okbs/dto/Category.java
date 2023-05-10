@@ -22,5 +22,10 @@ public class Category {
 	public void setCgroup(String cgroup) {
 		this.cgroup = cgroup;
 	}
+	@Override
+	public String toString() {
+		return "Category [ccode=" + ccode + ", cname=" + cname + ", cgroup="
+				+ cgroup + "]";
+	}
 	
 }

@@ -41,7 +41,27 @@
     <div class="fix_menubar">
         <ul>
             <li><a href="${path }" class="item0">홈</a></li>
-            <li><input type="checkbox" id="category" name="category" class="cate_chkbox" style="display:none"><label for="category" class="item1">스위치메뉴</label></li>
+            <li><input type="checkbox" id="category" name="category" class="cate_chkbox" style="display:none"><label for="category" class="item1">스위치메뉴</label>
+            	<div class="sub">
+	            	<ul>
+	            		<li>
+	            		<a href="${path }/ProductList.do?ccode=00">모든제품</a>
+	            		</li>
+	            		<li>
+	            		<a href="${path }/ProductList.do?ccode=01">닌텐도스위치</a>
+	            		</li>
+	            		<li>
+	            		<a href="${path }/ProductList.do?ccode=02">플레이스테이션</a>
+	           			</li>
+	           			<li>
+	           			<a href="${path }/ProductList.do?ccode=03">엑스박스</a>
+	           			</li>
+	           			<li>
+	           			<a href="${path }/ProductList.do?ccode=04">기타</a>
+	           			</li>
+	            	</ul>
+            	</div>
+            </li>
             <li><a href="${path }/NoticeList.do" class="item2">게시판</a></li>
             <li><a href="" class="item3">장바구니</a></li>
             <li><a href="" class="item4">주문내역</a></li>

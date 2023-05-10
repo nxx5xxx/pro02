@@ -24,6 +24,18 @@ public class Oracle11 {
 		final static String USER1_DELETE = "delete from user1 where id=? ";
 		final static String USER1_UPDATE_POINT ="update user1 set point=point+1 where id=?";
 		
+		final static String PRODUCT_SELECT = "select * from product where ccode=?";
+		final static String PRODUCT_SELECT_CATE_ALL = "select * from product where ccode like ?||'%'";
+		final static String PRODUCT_SELECT_ALL = "select * from product";
+		final static String PRODUCT_INSERT = "insert into product values(pcode.nextval,?,?,?,?,?,?,?)";
+		
+		
+		
+		final static String CATEGORY_SELECT_ALL = "select * from category";
+		final static String CATEGORY_SELECT_ONE = "select * from category where ccode=?";
+		final static String CATEGORY_SELECT_HALF = "select * from category where ccode like ?||'%'";
+		
+		
 	//연결해주는 연결자
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
