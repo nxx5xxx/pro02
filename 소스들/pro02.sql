@@ -1,3 +1,4 @@
+/*
 create table notice(
 idx int primary key,
 title varchar2(100) not null,
@@ -34,7 +35,7 @@ alter table product add ccode varchar2(8) default 0100 NOT NULL;
 alter table porduct modify ccode varchar2(8) NOT NULL;
 commit;
 select * from product;
-create sequence pcode start with 30011;
+
 insert into product values('30001','티어스 오브더 킹덤',74800,'젤다의 전설',25	);
 insert into product values('30002','포트리스',39800,'닌텐도스위치',8	);
 insert into product values('30003','원더풀라이프',44100,'목장이야기',3	);
@@ -163,7 +164,6 @@ CNT NUMBER default 0,foreign key(author) references user1(id));
 
 commit;
 
-drop table category;
 
 create table category(ccode VARCHAR2(8) primary key, cgroup VARCHAR2(50) not null, cname VARCHAR2(50) not null );
 
@@ -193,24 +193,40 @@ commit;
 
 select * from notice;
 select * from product;
+alter table product add ccode varchar2(8) default 0100 NOT NULL;
+alter table product add img varchar(1000);
 alter table product add img2 varchar(1000);
 update product set ccode='0101';
 commit;
 desc product;
-update product set IMG='img/proimg/30001.jpg';
+update product set IMG='img/proimg/30001.jpg' where pcode='30001';
+update product set IMG='img/proimg/30002.jpg' where pcode='30002';
+update product set IMG='img/proimg/30003.jpg' where pcode='30003';
+update product set IMG='img/proimg/30004.jpg' where pcode='30004';
+update product set IMG='img/proimg/30005.jpg' where pcode='30005';
+update product set IMG='img/proimg/30006.jpg' where pcode='30006';
 select * from product where ccode like '01'||'%';
 -- '*' MSSQL에서 사용됨
 
 --CNAME이 키 안에들어있는것이 값 
 -- 차, 바차,넘버,바차,넘버,바차,바차
-insert into product values('30007','MLB 더 쇼 23',67800,'SIE 샌디에이고 스튜디오',50,'0200','');
-insert into product values('30008','원피스 오디세이',69800,'반다이남코 엔터테인먼트',21,'0201','');
+create sequence pcode start with 30015;
+select * from product;
 
-insert into product values('30009','권바(QANBA) Q1 조이스틱 블랙',79400,'SWITCH/PS3/PC',100,'0401','');
-insert into product values('30010','포켓몬 피카츄 마우스 패드',4990,'Dongguan Lingjie Electronics Technology',0,'0402','');
+insert into product values(pcode.nextval,'MLB 더 쇼 23',67800,'SIE 샌디에이고 스튜디오',50,'0200','','');
+insert into product values(pcode.nextval,'원피스 오디세이',69800,'반다이남코 엔터테인먼트',21,'0201','','');
+
+insert into product values(pcode.nextval,'권바(QANBA) Q1 조이스틱 블랙',79400,'SWITCH/PS3/PC',100,'0401','','');
+insert into product values(pcode.nextval,'포켓몬 피카츄 마우스 패드',4990,'Dongguan Lingjie Electronics Technology',0,'0402','','');
 
 select * from category;
-
+select distinct cgroup from category;
 commit;
 
 
+--pname=?,price=?,pdesc=?,pamount=?,ccode=? where pcode=? ";
+update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img=? where pcode=?
+*/
+select * from product;
+update product set IMG2='img/proimg/null';
+commit;

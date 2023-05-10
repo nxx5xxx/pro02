@@ -18,7 +18,7 @@ th,td {padding:1.1vh}
 .noti {font-weight:bold ; font-size:5vmin}
 .category {float:left ;}
 .category > li {float:left ; margin-left : 30px}
-.cate_wrap { width:500px; margin:0 auto}
+.cate_wrap { width:600px; margin:0 auto}
 .top {text-align : center}
 img {width:15vh}
 </style>
@@ -30,23 +30,33 @@ img {width:15vh}
 	<div class="top"><span class="noti">${cgroup }</span></div>
 	<div class="cate_wrap">
 	<ul class="category">
-		<li><a href="${path1}/ProductList.do?ccode=${ccode}">ALL > </a></li>
+		<li><a href="${path1}/ProductList.do?ccode=00">모든제품&nbsp; ></a></li>
+		<c:if test="${ccode!=00 }">
+		<li><a href="${path1}/ProductList.do?ccode=${ccode}">${cgroup }&nbsp; ></a></li></c:if>
+	<c:if test="${ccode==00 }">
+		<li><a href="${path1}/ProductList.do?ccode=01">닌텐도스위치</a></li>
+		<li><a href="${path1}/ProductList.do?ccode=02">플레이스테이션</a></li>
+		<li><a href="${path1}/ProductList.do?ccode=03">엑스박스</a></li>
+		<li><a href="${path1}/ProductList.do?ccode=04">그외</a></li>
+	</c:if>
+	<c:if test="${ccode!=00 }">
 	<c:forEach items="${cateList }" var="cate">
 		<li><a href="${path1}/ProductList.do?ccode=${cate.ccode}">${cate.cname }</a></li>
 	</c:forEach>
+	</c:if>
 	</ul>
 	</div>
 	<div class="table_wrap">
 		<table>
 			<thead>
 					<tr>
-						<th>상품번호</th>
+						<th style="width:8%">상품번호</th>
 						<th>상품이름</th>
 						<th>가격</th>
 						<th>상세설명</th>
-						<th>재고</th>
-						<th>카테고리번호</th>
-						<th>상품사진</th>
+						<th style="width:5%">재고</th>
+						<th style="width:12%">카테고리번호</th>
+						<th colspan="2" style="text-align:center">상품사진</th>
 					</tr>
 			</thead>
 			<tbody>
@@ -59,6 +69,10 @@ img {width:15vh}
 						<td>${pro.pamount }</td>
 						<td>${pro.ccode }</td>
 						<td><img src='${path1 }/${pro.img}' alt="${pro.pname }"/></td>
+						<c:if test="${id == 'admin'}">
+						<td><input type="button" value="수정" onclick="location.href='${path1 }/GoProductUpdate.do?pcode=${pro.pcode }'"><br><br>
+							<input type="button" value="삭제" onclick="location.href='${path1 }/ProductDelete.do?pcode=${pro.pcode }'"><td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</tbody>

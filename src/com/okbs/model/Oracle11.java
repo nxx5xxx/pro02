@@ -28,7 +28,12 @@ public class Oracle11 {
 		final static String PRODUCT_SELECT_CATE_ALL = "select * from product where ccode like ?||'%'";
 		final static String PRODUCT_SELECT_ALL = "select * from product";
 		final static String PRODUCT_INSERT = "insert into product values(pcode.nextval,?,?,?,?,?,?,?)";
-		
+		final static String PRODUCT_SELECT_PCODE ="select * from product where pcode=?";
+		final static String PRODUCT_UPDATE = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=? where pcode=? ";
+		final static String PRODUCT_UPDATE_IMG = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img=? where pcode=? ";
+		final static String PRODUCT_UPDATE_IMG2 = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img2=? where pcode=? ";
+		final static String PRODUCT_UPDATE_IMG_IMG2 = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img=?,img2=? where pcode=? ";
+		final static String PRODUCT_DELETE_PCODE = "delete from product where pcode=?";
 		
 		
 		final static String CATEGORY_SELECT_ALL = "select * from category";

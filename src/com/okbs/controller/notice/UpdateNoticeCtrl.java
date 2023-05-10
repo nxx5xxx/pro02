@@ -50,7 +50,10 @@ public class UpdateNoticeCtrl extends HttpServlet {
 		} catch (Exception e) {
 			System.out.println("예외발생 : "+e);
 		}
-		notice.setIdx(idx);notice.setTitle(title);notice.setContent(content);notice.setFile1(fileName);
+		notice.setIdx(idx);
+		notice.setTitle(title);
+		notice.setContent(content);
+		notice.setFile1(fileName);
 		ndao.updateNotice(notice);
 
 		response.sendRedirect("NoticeList.do");
