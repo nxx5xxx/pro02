@@ -21,13 +21,15 @@
 			<ul>
 				<c:choose>
 				<c:when test="${id=='admin' }">
-                    <li><a href="">관리자모드</a></li>
+                    <li>관리자모드</li>
+                    <li><a href="${path }/GoBasket.do?id=admin">고객장바구니</a></li>
                     <li><a href="${path }/Logout.do">관리자모드나가기</a></li>
+                    
 				</c:when>
 				<c:when test="${!empty id }">                    
 					<li><a href="${path }/Logout.do">로그아웃</a></li>
                     <li><a href="${path }/MyPageUser.do?id=${id}">마이페이지</a></li>
-                    <li><a href="">장바구니</a></li>
+                    <li><a href="${path }/GoBasket.do?id=${id}">장바구니</a></li>
 				</c:when>
 				<c:otherwise>
                     <li><a href="${path }/GoLogin.do">로그인</a></li>

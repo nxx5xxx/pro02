@@ -200,10 +200,12 @@ public class ProductDAO {
 				cate.setCgroup(rs.getString("cgroup"));
 				cateList.add(cate);
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch(ClassNotFoundException e) {
+			System.out.println("오라클JDBC 파일이 잘못되었습니다");
+		} catch(SQLException e) {
+			System.out.println("SQL구문이 잘못되었습니다");
+		} catch(Exception e){
+			System.out.println("식별할수 없는 오류가 발생했습니다.");
 		}
 		Oracle11.close(rs, pstmt, conn);
 		return cateList;
@@ -241,13 +243,75 @@ public class ProductDAO {
 				pcode = Integer.parseInt(rs.getString("pcode")) + 1;
 			}
 			
+		} catch(ClassNotFoundException e) {
+			System.out.println("오라클JDBC 파일이 잘못되었습니다");
+		} catch(SQLException e) {
+			System.out.println("SQL구문이 잘못되었습니다");
+		} catch(Exception e){
+			System.out.println("식별할수 없는 오류가 발생했습니다.");
+		}
+		Oracle11.close(rs, pstmt, conn);
+		return pcode;
+	}
+	
+	public void plusAmount(int plsamount,String pcode){
+		int sw=0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.PRODUCT_PLUS_AMOUNT);
+			pstmt.setInt(1, plsamount);
+			pstmt.setString(2, pcode);
+			sw = pstmt.executeUpdate();
+			if(sw>0){
+				System.out.println(pcode+" 제품에"+plsamount+"개 입고완료");
+			}
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		Oracle11.close(pstmt, conn);
+	}
+	
+	public void minusAmount(int plsamount,String pcode){
+		int sw=0;
+		int amount=0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.PRODUCT_MINUS_AMOUNT);
+			pstmt.setInt(1, plsamount);
+			pstmt.setString(2, pcode);
+			sw = pstmt.executeUpdate();
+			if(sw>0){
+				System.out.println(pcode+" 제품에"+plsamount+"개 출고완료");
+			}
+			
+			pstmt = conn.prepareStatement(Oracle11.PRODUCT_SELECT_PCODE);
+			pstmt.setString(1, pcode);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				amount = rs.getInt("pamount");
+			}
+			
+			if(amount<0){
+			pstmt=conn.prepareStatement(Oracle11.PRODUCT_ZERO_AMOUNT);
+			pstmt.setString(1, pcode);
+			sw=pstmt.executeUpdate();
+				if(sw>0){
+					System.out.println("재고값이 0으로 변경되었습니다");
+				}
+			}
+			
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("오라클JDBC 파일이 잘못되었습니다");
+		} catch(SQLException e) {
+			System.out.println("SQL구문이 잘못되었습니다");
+		} catch(Exception e){
+			System.out.println("식별할수 없는 오류가 발생했습니다.");
+		}
 		Oracle11.close(rs, pstmt, conn);
-		return pcode;
 	}
 	
 }

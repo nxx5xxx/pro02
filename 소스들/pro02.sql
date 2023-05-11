@@ -243,3 +243,24 @@ select pcode from  (select * from product order by pcode desc) where rownum=1;
 select pcode from (select * from product where cate='0101' order by pcode desc) where rownum = 1;
 
 select * from basket;
+
+select * from product;
+update product set ccode='0101';
+desc product;
+commit;
+--alter table product drop column ccode;
+--alter table product drop column img;
+--alter table product drop column img2;
+--alter table product add ccode varchar2(8) default '0100' NOT NULL;
+--alter table product add ccode varchar2(8);
+--alter table product add img varchar2(1000);
+--alter table product add img2 varchar2(1000);
+select * from basket;
+desc basket;
+select a.bnum as bnum, a.pcode as pcode , a.bamount as  bamount, a.price as price,  from basket a , user1 b where a.id=b.id;
+
+select a.bnum as bnum, a.pcode as pcode ,c.pname as pname , 
+        a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img
+        from basket a , product c where a.pcode=c.pcode and id='kim' ;
+select a.bnum as bnum, a.pcode as pcode ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a , product c where a.pcode=c.pcode and id='kim';
+select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id;

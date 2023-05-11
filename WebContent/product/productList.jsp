@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path1" value="${pageContext.request.contextPath }" />
+
 
 <html>
 <head>
@@ -21,6 +23,9 @@ th,td {padding:1.1vh}
 .cate_wrap { width:600px; margin:0 auto}
 .top {text-align : center}
 img {width:15vh}
+.plsin,.mnsin {display:none}
+.chkpls:checked ~ .plsin{display:block ;width:30%; float:right}
+.chkmns:checked ~ .mnsin{display:block ;width:30%; float:right}
 </style>
 
 </head>
@@ -60,13 +65,30 @@ img {width:15vh}
 					</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${proList }" var="pro">
+				<c:forEach items="${proList }" var="pro" varStatus="cnt">
 					<tr>
 						<td>${pro.pcode }</td>
-						<td><a href="${path1 }/GoProductDetail.do?pcode=${pro.pcode }" title="수량 : ${pro.pamount }">${pro.pname}</a></td>
+						<td><a href="${path1 }/GoProductDetail.do?pcode=${pro.pcode }" title="수량 : ${pro.pamount }">${pro.pname}</a>
+						<c:if test="${id =='admin' }"> 
+						<br><label for="pluschk${cnt.count }">입고</label><input type="checkbox" id="pluschk${cnt.count }" class="chkpls">
+						<input type="text" id="plusintput${cnt.count }" class="plsin" placeholder="개수입력" >
+						<input type="button" value="입고" class="plsin" onclick="plusproduct(${cnt.count },${pro.pcode })"><br>
+						
+							<c:if test="${pro.pamount > 0 }">
+								<label for="minuschk${cnt.count }">출고</label><input type="checkbox" id="minuschk${cnt.count }" class="chkmns">
+								<input type="text" id="minusinput${cnt.count }" class="mnsin" placeholder="개수입력">
+								<input type="button" value="출고" class="mnsin" onclick="minusproduct(${cnt.count },${pro.pcode })">
+							</c:if>
+						</c:if>
+						</td>
 						<td>${pro.price }</td>
 						<td>${pro.pdesc }</td>
+						<c:if test="${pro.pamount > 0 }">
 						<td>${pro.pamount }</td>
+						</c:if>
+						<c:if test="${pro.pamount <= 0 }">
+						<td>품절</td>
+						</c:if>
 						<td>${pro.ccode }</td>
 						<td><img src='${path1 }/${pro.img}' alt="${pro.pname }"/></td>
 						<c:if test="${id == 'admin'}">
@@ -77,6 +99,38 @@ img {width:15vh}
 				</c:forEach>
 			</tbody>
 		</table>
+		<script>
+		function plusproduct(x,y){
+			$.ajax({
+				url:"${path1 }/PlusAmount.do",
+				type:"post",
+				dataType:"json",
+				data:{pluschk:$("#plusintput"+x).val() , pcode:y},
+				encType:"UTF-8",
+				success:function(result){
+					console.log(result);
+					var pamount = result.pamount;
+					$("#plusintput"+x).val(amount);
+				}
+			});
+			location.reload();
+		}
+		function minusproduct(x,y){
+			$.ajax({
+				url:"${path1 }/MinusAmount.do",
+				type:"post",
+				dataType:"json",
+				data:{mnschk:$("#minusinput"+x).val() , pcode:y},
+				encType:"UTF-8",
+				success:function(result){
+					console.log(result);
+					var pamount = result.pamount;
+					$("#minusintput"+x).val(amount);
+				}
+			});
+			location.reload();
+		}
+		</script>
 		<div>
 			<c:if test="${id == 'admin'}">
 			|<a href="${path1 }/GoProductInsert.do" style="font-size:24px">글 쓰기</a>

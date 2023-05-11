@@ -1,0 +1,19 @@
+		String id = request.getParameter("id");
+		HttpSession session = request.getSession();
+
+		String sid = (String) session.getAttribute("id");
+		if(sid.equals(id)){
+		
+			
+		
+			
+			
+			
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/         경     로                      ?id="+id);
+		view.forward(request, response);
+		}else{
+			String alert="비정상적인 접근을 허용하지 않습니다";
+			request.setAttribute("alert", alert);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/index.jsp");
+			view.forward(request, response);
+		}

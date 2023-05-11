@@ -46,7 +46,8 @@ input{width:100%}
 		</tr>
 		<tr>
 			<th>재고량</th>
-			<td>${product.pamount}</td>
+			<c:if test="${product.pamount <=0}"><td>품절</td></c:if>
+			<c:if test="${product.pamount >0}"><td>${product.pamount}</td></c:if>
 		</tr>
 		<c:if test="${product.img != 'img/proimg/null'}">
 			<tr>

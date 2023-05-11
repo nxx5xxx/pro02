@@ -29,12 +29,14 @@ public class Oracle11 {
 		final static String PRODUCT_SELECT_ALL = "select * from product";
 		final static String PRODUCT_INSERT = "insert into product values(?,?,?,?,?,?,?,?)";
 		final static String PRODUCT_SELECT_PCODE ="select * from product where pcode=?";
-		final static String PRODUCT_UPDATE = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=? where pcode=? ";
+		final static String PRODUCT_UPDATE = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=? where pcode=?";
 		final static String PRODUCT_UPDATE_IMG = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img=? where pcode=? ";
 		final static String PRODUCT_UPDATE_IMG2 = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img2=? where pcode=? ";
 		final static String PRODUCT_UPDATE_IMG_IMG2 = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img=?,img2=? where pcode=? ";
 		final static String PRODUCT_DELETE_PCODE = "delete from product where pcode=?";
-		
+		final static String PRODUCT_PLUS_AMOUNT= "update product set pamount=pamount+? where pcode=?";
+		final static String PRODUCT_MINUS_AMOUNT= "update product set pamount=pamount-? where pcode=?";
+		final static String PRODUCT_ZERO_AMOUNT = "update product set pamount=0 where pcode=?";
 		
 		final static String CATEGORY_SELECT_ALL = "select * from category";
 		final static String CATEGORY_SELECT_ONE = "select * from category where ccode=?";
@@ -43,6 +45,9 @@ public class Oracle11 {
 		final static String CATEGORY_SECOND_SELECT = "select ccode as frcate, cname from category where ccode like ?||'%' order by frcate";
 		
 		final static String PCODE_GENERATE = "select pcode from  (select * from product order by pcode desc) where rownum=1";
+		final static String BASKET_ALLUSER_SELECT = "select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id";
+		final static String BASKET_ONEUSER_SELECT = "select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id and a.id=?";
+		
 	//연결해주는 연결자
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

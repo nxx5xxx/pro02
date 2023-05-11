@@ -25,7 +25,6 @@ public class CategoryLodingCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8"); 
 		
 		String ccode1 = request.getParameter("ccode1");
-		
 		ProductDAO prodao = new ProductDAO();
 		ArrayList<CategoryVO> ctList = new ArrayList<>();
 		ctList = prodao.getSecondCategoryList(ccode1);
