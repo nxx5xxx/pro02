@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path1" value="${pageContext.request.contextPath }"/>
 
 <%
@@ -30,11 +31,29 @@ input{width:100%}
 <div class="wrap_bt">
 	<div class="table_wrap">
 	<h1>상품추가</h1>
-	<form action="${path1 }/ProductInsert.do" method="post" enctype="multipart/form-data">
+	<form action="${path1 }/ProductInsert.do" method="post" enctype="multipart/form-data" onsubmit="return productCheck(this);">
 		<table>
 		<tr>	
 			<th><label for="pcode">상품코드</label></th>
-			<td><input type="text" name="pcode" id="pcode" placeholder="자동으로 입력됩니다" readonly></td>
+			<td><input type="text" name="pcode" id="pcode" placeholder="아래 생성버튼을 누르세요" readonly>
+				<input type="text" name="pcodechk" id="pcodechk" style="display:none">
+				<input type="button" value="상품코드 생성" onclick="pcodeGenerator()"> </td>
+		</tr>
+		<tr>
+			<th>카테고리코드</th>
+			<td>대분류
+				<select name="ccode1" id="ccode1" required>
+				<option value="">선택안함</option>
+				<c:forEach items="${cateList }" var="cate">
+				<option value="${cate.ftcate }">${cate.cgroup }</option>
+				</c:forEach>
+
+				</select>
+				소분류
+				<select name="ccode2" id="ccode2" required>
+				<option value="">선택안함</option>	
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<th><label for="pname">상품이름</label></th>
@@ -57,10 +76,6 @@ input{width:100%}
 			<td><input type="text" name="pamount" id="pamount" required></td>
 		</tr>
 		<tr>
-			<th><label for="ccode">카테고리코드</label></th>
-			<td><input type="text" name="ccode" id="ccode" placeholder="01닌텐도02플스03엑스박스/01기타02액션03총04RPG/04기타01조이스틱02주변기기03완구" required></td>
-		</tr>
-		<tr>
 			<th><label for="img">썸네일 이미지</label></th>
 			<td><input type="file" name="img" id="img" ></td>
 		</tr>
@@ -70,6 +85,52 @@ input{width:100%}
 		</tr>
 		</table>
 	</form>
+	<script>
+	$("#ccode1").change(function(){
+		if($("#ccode1").val()==""){
+			alert("대분류 카테고리를 선택하세요");
+			$("#ccode1").focus();
+			return ;
+		}
+		var params = { ccode1 : $("#ccode1").val()}
+		$.ajax({
+			url: "${path1 }/CategoryLoding.do",
+			type:"post",
+			dataType:"json",
+			data:params,
+			success:function(result){
+				console.log(result);
+				var ctList = result.ctList;
+				$("#ccode2").empty();
+				$("#ccode2").append("<option value=''>선택안함</option>");
+				for(var i in ctList){
+					$("#ccode2").append("<option value='"+ctList[i]["frcate"]+"'>"+ctList[i]["cname"]+"</option>");
+				}
+			}
+		})
+	})
+	function pcodeGenerator(){
+		$.ajax({
+			url:"${path1 }/PcodeGeneratorCtrl.do",
+			type:"post",
+			dataType:"json",
+			encType:"UTF-8",
+			success:function(result){
+				console.log(result);
+				var pcode = result.pcode;
+				$("#pcode").val(pcode);
+				$("#pcodechk").val("yes");
+			}
+		})
+		
+	}
+	function productCheck(f){
+		if(f.pcodechk.value!="yes"){
+			alert("상품코드를 생성하지 않으셨습니다.");
+			return false;
+		}
+	}
+	</script>
 	</div>
 </div>
 <%@ include file="/footer.jsp" %>

@@ -5,7 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.okbs.model.Oracle11;
 import com.okbs.dto.Product;
+import com.okbs.vo.CategoryVO;
 
 public class ProductDAO {
 	private Connection conn=null;
@@ -51,13 +53,14 @@ public class ProductDAO {
 		try{
 			conn = Oracle11.getConnection();
 			pstmt = conn.prepareStatement(Oracle11.PRODUCT_INSERT);
-			pstmt.setString(1, product.getPname());
-			pstmt.setInt(2, product.getPrice());
-			pstmt.setString(3, product.getPdesc());
-			pstmt.setInt(4, product.getPamount());
-			pstmt.setString(5, product.getCcode());
-			pstmt.setString(6, "img/proimg/"+product.getImg());
-			pstmt.setString(7, "img/proimg/"+product.getImg2());
+			pstmt.setString(1, product.getPcode());
+			pstmt.setString(2, product.getPname());
+			pstmt.setInt(3, product.getPrice());
+			pstmt.setString(4, product.getPdesc());
+			pstmt.setInt(5, product.getPamount());
+			pstmt.setString(6, product.getCcode());
+			pstmt.setString(7, "img/proimg/"+product.getImg());
+			pstmt.setString(8, "img/proimg/"+product.getImg2());
 			sw = pstmt.executeUpdate();
 			if(sw>0){
 				System.out.println("파일이 성공적으로 업로드되었습니다");
@@ -183,4 +186,68 @@ public class ProductDAO {
 		}
 		Oracle11.close(pstmt, conn);
 	}
+	
+	public ArrayList<CategoryVO> getFirstCategoryList(){
+		ArrayList<CategoryVO> cateList = new ArrayList<CategoryVO>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.CATEGORY_FIRST_SELECT);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				CategoryVO cate = new CategoryVO();
+				cate.setFtcate(rs.getString("ftcate"));
+				//System.out.println(rs.getString("ftcate")); //카테고리 목록 테스트
+				cate.setCgroup(rs.getString("cgroup"));
+				cateList.add(cate);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Oracle11.close(rs, pstmt, conn);
+		return cateList;
+	}
+	
+	public ArrayList<CategoryVO> getSecondCategoryList(String ct){
+		ArrayList<CategoryVO> cateList = new ArrayList<CategoryVO>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.CATEGORY_SECOND_SELECT);
+			pstmt.setString(1, ct);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				CategoryVO cate = new CategoryVO();
+				cate.setFrcate(rs.getString("frcate"));
+				cate.setCname(rs.getString("cname"));
+				cateList.add(cate);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, conn);
+		}
+		return cateList;
+	}
+	public int pcodeGenerator(){
+		int pcode=0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.PCODE_GENERATE);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				pcode = Integer.parseInt(rs.getString("pcode")) + 1;
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Oracle11.close(rs, pstmt, conn);
+		return pcode;
+	}
+	
 }

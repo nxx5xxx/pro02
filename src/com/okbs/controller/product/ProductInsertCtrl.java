@@ -31,11 +31,12 @@ public class ProductInsertCtrl extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request,uploadFilePath,10485760,"UTF-8",new DefaultFileRenamePolicy());
 		img1 = multi.getFilesystemName("img");
 		img2 = multi.getFilesystemName("img2");
+		product.setPcode(multi.getParameter("pcode"));
 		product.setPname(multi.getParameter("pname"));
 		product.setPrice(Integer.parseInt(multi.getParameter("price")));
 		product.setPdesc(multi.getParameter("pdesc"));
 		product.setPamount(Integer.parseInt(multi.getParameter("pamount")));
-		product.setCcode(multi.getParameter("ccode"));
+		product.setCcode(multi.getParameter("ccode2"));
 		product.setImg(img1);
 		product.setImg2(img2);
 		}catch(Exception e){

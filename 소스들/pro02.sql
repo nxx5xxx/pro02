@@ -227,6 +227,19 @@ commit;
 --pname=?,price=?,pdesc=?,pamount=?,ccode=? where pcode=? ";
 update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img=? where pcode=?
 */
+--substr(변수명,어디부터,몇글자)
+--ex)
+--select 
+
 select * from product;
-update product set IMG2='img/proimg/null';
+--update product set IMG2='img/proimg/null';
 commit;
+
+select *  from category;
+select distinct substr(ccode,1,2) as ct, cgroup from category group by substr(ccode,1,2), cgroup order by ct;
+select ccode as frcate, cname from category where ccode like '01'||'%' order by frcate;
+select distinct substr(ccode,1,2) as ct, cgroup from category group by substr(ccode,1,2), cgroup order by ct;
+select pcode from  (select * from product order by pcode desc) where rownum=1;
+select pcode from (select * from product where cate='0101' order by pcode desc) where rownum = 1;
+
+select * from basket;

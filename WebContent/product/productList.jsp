@@ -63,7 +63,7 @@ img {width:15vh}
 				<c:forEach items="${proList }" var="pro">
 					<tr>
 						<td>${pro.pcode }</td>
-						<td>${pro.pname}</td>
+						<td><a href="${path1 }/GoProductDetail.do?pcode=${pro.pcode }" title="수량 : ${pro.pamount }">${pro.pname}</a></td>
 						<td>${pro.price }</td>
 						<td>${pro.pdesc }</td>
 						<td>${pro.pamount }</td>
@@ -79,7 +79,7 @@ img {width:15vh}
 		</table>
 		<div>
 			<c:if test="${id == 'admin'}">
-			|<a href="${path1 }/product/insertProduct.jsp" style="font-size:24px">글 쓰기</a>
+			|<a href="${path1 }/GoProductInsert.do" style="font-size:24px">글 쓰기</a>
 			</c:if>
 		</div>
 	</div>

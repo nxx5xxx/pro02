@@ -27,7 +27,7 @@ public class Oracle11 {
 		final static String PRODUCT_SELECT = "select * from product where ccode=?";
 		final static String PRODUCT_SELECT_CATE_ALL = "select * from product where ccode like ?||'%'";
 		final static String PRODUCT_SELECT_ALL = "select * from product";
-		final static String PRODUCT_INSERT = "insert into product values(pcode.nextval,?,?,?,?,?,?,?)";
+		final static String PRODUCT_INSERT = "insert into product values(?,?,?,?,?,?,?,?)";
 		final static String PRODUCT_SELECT_PCODE ="select * from product where pcode=?";
 		final static String PRODUCT_UPDATE = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=? where pcode=? ";
 		final static String PRODUCT_UPDATE_IMG = "update product set pname=?,price=?,pdesc=?,pamount=?,ccode=?,img=? where pcode=? ";
@@ -39,8 +39,10 @@ public class Oracle11 {
 		final static String CATEGORY_SELECT_ALL = "select * from category";
 		final static String CATEGORY_SELECT_ONE = "select * from category where ccode=?";
 		final static String CATEGORY_SELECT_HALF = "select * from category where ccode like ?||'%'";
+		final static String CATEGORY_FIRST_SELECT = "select distinct substr(ccode,1,2) as ftcate, cgroup from category group by substr(ccode,1,2), cgroup order by ftcate";
+		final static String CATEGORY_SECOND_SELECT = "select ccode as frcate, cname from category where ccode like ?||'%' order by frcate";
 		
-		
+		final static String PCODE_GENERATE = "select pcode from  (select * from product order by pcode desc) where rownum=1";
 	//연결해주는 연결자
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

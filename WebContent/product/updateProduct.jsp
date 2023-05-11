@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품추가</title>
+<title>${product.pname} 상품수정</title>
 <%@ include file="/common.jsp" %>
 <style>
 textarea {resize : none; width:100%}
@@ -33,7 +33,7 @@ input{width:100%}
 <body>
 <div class="wrap_bt">
 	<div class="table_wrap">
-	<h1>상품추가 ${img2Name }23</h1>
+	<h1>${product.pname} 상품수정</h1>
 	<form action="${path1 }/ProductUpdate.do" method="post" enctype="multipart/form-data">
 		<table>
 		<tr>	

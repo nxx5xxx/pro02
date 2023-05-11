@@ -40,8 +40,8 @@
   <hr style="clear:both">
     <div class="fix_menubar">
         <ul>
-            <li><a href="${path }" class="item0">홈</a></li>
-            <li><input type="checkbox" id="category" name="category" class="cate_chkbox" style="display:none"><label for="category" class="item1">스위치메뉴</label>
+            <li><a href="${path }" class="item0" title="홈으로">홈</a></li>
+            <li><input type="checkbox" id="category" name="category" class="cate_chkbox" style="display:none"><label for="category" class="item1" title="상품목록">스위치메뉴</label>
             	<div class="sub">
 	            	<ul>
 	            		<li>
@@ -62,11 +62,11 @@
 	            	</ul>
             	</div>
             </li>
-            <li><a href="${path }/NoticeList.do" class="item2">게시판</a></li>
-            <li><a href="" class="item3">장바구니</a></li>
-            <li><a href="" class="item4">주문내역</a></li>
-            <li><a href="#" class="item5">페이지상단</a></li>
-            <li><a href="#bottom" class="item6">페이지하단</a></li>
+            <li><a href="${path }/NoticeList.do" class="item2" title="게시판">게시판</a></li>
+            <li><a href="" class="item3" title="장바구니">장바구니</a></li>
+            <li><a href="" class="item4" title="주문내역">주문내역</a></li>
+            <li><a href="#" class="item5" title="페이지상단">페이지상단</a></li>
+            <li><a href="#bottom" class="item6" title="페이지하단">페이지하단</a></li>
         </ul>
     </div>
 </header>
