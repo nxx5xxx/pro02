@@ -24,6 +24,7 @@ input{width:100%}
 #yeschange2:checked ~ #img2change {display:block}
 .changeBox {display:none}
 .fl {float:left ; clear:left;line-height:3}
+
 </style>
 
 </head>
@@ -47,7 +48,10 @@ input{width:100%}
 		<tr>
 			<th>재고량</th>
 			<c:if test="${product.pamount <=0}"><td>품절</td></c:if>
-			<c:if test="${product.pamount >0}"><td>${product.pamount}</td></c:if>
+			<c:if test="${product.pamount >0}">
+			<td>${product.pamount} 개
+			<c:if test="${id != null && id != 'admin' }"><br><input type="text" value="1" id="basamount" style="text-align:right" class="inw20"><br><input type="button" value="장바구니" onclick="insertbasket()" class="inw10"><input type="button" value="바로구매" class="inw10"></c:if></td>
+			</c:if>
 		</tr>
 		<c:if test="${product.img != 'img/proimg/null'}">
 			<tr>
@@ -60,7 +64,7 @@ input{width:100%}
 		<c:if test="${product.img2 != 'img/proimg/null'}">
 			<tr>
 				<th colspan="2" style="text-align:center">
-				<img src="${product.img2 }" style="width:100vh">
+				<img src="${product.img2 }" style="width:100vh; max-width:90%">
 				</th>
 			</tr>
 		</c:if>
@@ -68,6 +72,19 @@ input{width:100%}
 			<td colspan="2"><input type="button" value="뒤로가기" onclick="history.go(-1)"></td>
 		</tr>
 		</table>
+		<script>
+		function insertbasket(){
+			//var params = { cate1:$("#cate1").val() }
+			$.ajax({
+				url:"${path1 }/InsertBasket.do",
+				type:"post",
+				dataType:"json",
+				data:{amount:$("#basamount").val() , pcode:${product.pcode}},
+				encType:"UTF-8"
+			});
+			alert("장바구니에 물건을 담았습니다");
+		}
+		</script>
 	</div>
 </div>
 <%@ include file="/footer.jsp" %>

@@ -5,6 +5,7 @@ public class BasketVO {
 	private String id;
 	private String pcode;
 	private String pname;
+	private int pamount;
 	private int bamount;
 	private int price;
 	private String img;
@@ -34,6 +35,12 @@ public class BasketVO {
 	}
 	public void setPname(String pname) {
 		this.pname = pname;
+	}
+	public int getPamount() {
+		return pamount;
+	}
+	public void setPamount(int pamount) {
+		this.pamount = pamount;
 	}
 	public int getBamount() {
 		return bamount;

@@ -263,4 +263,22 @@ select a.bnum as bnum, a.pcode as pcode ,c.pname as pname ,
         a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img
         from basket a , product c where a.pcode=c.pcode and id='kim' ;
 select a.bnum as bnum, a.pcode as pcode ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a , product c where a.pcode=c.pcode and id='kim';
-select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id;
+select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id and a.id='kim';
+
+select * from (select * from basket order by bnum desc) where rownum=1;
+
+select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,c.pamount as pamount, a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id;
+
+select * from basket where id='kim' and pcode='30006';
+update basket set bamount=bamount+3,price=price*(bamount+3) where bnum='50007'; --74800
+commit;
+
+select a.bnum as bnum, a.id as id ,
+    a.pcode as pcode ,c.pname as pname ,c.pamount as pamount , a.bamount as  bamount, (a.bamount*c.price) as price, 
+    c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id and a.id='kim';
+    
+    update basket set bamount=2 where bnum='50010';
+    
+alter table basket drop column price;
+
+alter table basket add price NUMBER default 0 NOT NULL;

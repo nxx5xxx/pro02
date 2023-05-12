@@ -31,6 +31,7 @@ public class GoBasket extends HttpServlet {
 			ArrayList<BasketVO> bas = new ArrayList<>();
 			bas = basdao.getMyBasket(sid);
 			
+			//재고보다 장바구니에 높게 담으면 안되므로 재고수량도 갖고와야함
 			request.setAttribute("basList", bas);
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/basket/basket.jsp?id="+id);
 		view.forward(request, response);

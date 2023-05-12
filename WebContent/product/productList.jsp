@@ -109,8 +109,8 @@ img {width:15vh}
 				encType:"UTF-8",
 				success:function(result){
 					console.log(result);
-					var pamount = result.pamount;
-					$("#plusintput"+x).val(amount);
+					//var pamount = result.pamount;
+					//$("#plusintput"+x).val(pamount);
 				}
 			});
 			location.reload();
@@ -124,8 +124,8 @@ img {width:15vh}
 				encType:"UTF-8",
 				success:function(result){
 					console.log(result);
-					var pamount = result.pamount;
-					$("#minusintput"+x).val(amount);
+					//var pamount = result.pamount;
+					//$("#minusintput"+x).val(pamount);
 				}
 			});
 			location.reload();

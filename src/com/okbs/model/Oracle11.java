@@ -45,8 +45,17 @@ public class Oracle11 {
 		final static String CATEGORY_SECOND_SELECT = "select ccode as frcate, cname from category where ccode like ?||'%' order by frcate";
 		
 		final static String PCODE_GENERATE = "select pcode from  (select * from product order by pcode desc) where rownum=1";
-		final static String BASKET_ALLUSER_SELECT = "select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id";
-		final static String BASKET_ONEUSER_SELECT = "select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id and a.id=?";
+		
+		final static String BASKETVO_ALLUSER_SELECT = "select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,c.pamount as pamount, a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id";
+		final static String BASKETVO_ONEUSER_SELECT = "select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,c.pamount as pamount , a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id and a.id=?";
+		final static String BASKET_LASTBNUM_SELECT = "select * from (select * from basket order by bnum desc) where rownum=1";
+		final static String BASKET_ALREADY_SELECT = "select * from basket where id=? and pcode=?";
+		final static String BASKET_ALREADY_UPDATE = "update basket set bamount=bamount+?,price=price*(bamount+?) where bnum=?";
+		final static String BASKET_INSERT = "insert into basket values(?,?,?,?,?)";
+		final static String BASKET_DELETE = "delete from basket where bnum=? ";
+		final static String BASKET_UPDATE_BNUM = "update basket set bamount=? where bnum=?";
+		
+		final static String BUY_BASKET_SELECT_ID ="select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id and a.id=?";
 		
 	//연결해주는 연결자
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{

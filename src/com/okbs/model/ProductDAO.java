@@ -95,6 +95,7 @@ public class ProductDAO {
 				pro.setCcode(rs.getString("ccode"));
 				pro.setImg(rs.getString("img"));
 				pro.setImg2(rs.getString("img2"));
+				//System.out.println("셀렉트값 잘 받아옴");
 			}
 			
 		} catch(ClassNotFoundException e) {
@@ -104,6 +105,7 @@ public class ProductDAO {
 		} catch(Exception e){
 			System.out.println("식별할수 없는 오류가 발생했습니다.");
 		}
+
 		Oracle11.close(rs, pstmt, conn);
 		return pro;
 	}
