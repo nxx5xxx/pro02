@@ -17,16 +17,6 @@ public class BuyVO {
 	private	int pamount;
 	private String ccode;
 	private String img;
-	private String img2;
-	@Override
-	public String toString() {
-		return "BuyVO [onum=" + onum + ", id=" + id + ", pcode=" + pcode
-				+ ", tel=" + tel + ", addr=" + addr + ", amount=" + amount
-				+ ", price=" + price + ", ename=" + ename + ", ecode=" + ecode
-				+ ", status=" + status + ", odate=" + odate + ", pname="
-				+ pname + ", pdesc=" + pdesc + ", pamount=" + pamount
-				+ ", ccode=" + ccode + ", img=" + img + ", img2=" + img2 + "]";
-	}
 	public String getOnum() {
 		return onum;
 	}
@@ -123,11 +113,15 @@ public class BuyVO {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public String getImg2() {
-		return img2;
+	@Override
+	public String toString() {
+		return "BuyVO [onum=" + onum + ", id=" + id + ", pcode=" + pcode
+				+ ", tel=" + tel + ", addr=" + addr + ", amount=" + amount
+				+ ", price=" + price + ", ename=" + ename + ", ecode=" + ecode
+				+ ", status=" + status + ", odate=" + odate + ", pname="
+				+ pname + ", pdesc=" + pdesc + ", pamount=" + pamount
+				+ ", ccode=" + ccode + ", img=" + img + "]";
 	}
-	public void setImg2(String img2) {
-		this.img2 = img2;
-	}
+	
 	
 }
