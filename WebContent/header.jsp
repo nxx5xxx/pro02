@@ -23,6 +23,7 @@
 				<c:when test="${id=='admin' }">
                     <li>관리자모드</li>
                     <li><a href="${path }/GoBasket.do?id=admin">고객장바구니</a></li>
+					<li><a href="${path }/GoBuyList.do?id=${id}">고객 구매내역</a></li>
                     <li><a href="${path }/Logout.do">관리자모드나가기</a></li>
                     
 				</c:when>
@@ -30,6 +31,7 @@
 					<li><a href="${path }/Logout.do">로그아웃</a></li>
                     <li><a href="${path }/MyPageUser.do?id=${id}">마이페이지</a></li>
                     <li><a href="${path }/GoBasket.do?id=${id}">장바구니</a></li>
+                    <li><a href="${path }/GoBuyList.do?id=${id}">구매내역</a></li>
 				</c:when>
 				<c:otherwise>
                     <li><a href="${path }/GoLogin.do">로그인</a></li>

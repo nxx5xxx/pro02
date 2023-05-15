@@ -64,7 +64,7 @@ th,td {padding:1.1vh}
 			</c:forEach>
 		</tbody>
 		</table>
-		<a href="${path1 }/buy/addSales.jsp" style="font-size:18px ; line-height:50px">구매하기</a>
+		<a href="${path1 }/GoBuy.do?id=${id}" style="font-size:18px ; line-height:50px">구매하기</a>
 	</div>
 	<script>
 	function changeBasket(x,y,cnt){//여기서 x는 위에서 받은 재고갯수임

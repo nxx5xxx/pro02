@@ -52,10 +52,19 @@ public class Oracle11 {
 		final static String BASKET_ALREADY_SELECT = "select * from basket where id=? and pcode=?";
 		final static String BASKET_ALREADY_UPDATE = "update basket set bamount=bamount+?,price=price*(bamount+?) where bnum=?";
 		final static String BASKET_INSERT = "insert into basket values(?,?,?,?,?)";
-		final static String BASKET_DELETE = "delete from basket where bnum=? ";
+		final static String BASKET_DELETE = "delete from basket where bnum=?";
 		final static String BASKET_UPDATE_BNUM = "update basket set bamount=? where bnum=?";
 		
 		final static String BUY_BASKET_SELECT_ID ="select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id and a.id=?";
+		final static String BUY_HOWMUCH = "select sum(a.bamount*c.price)as sumprice from  basket a,user1 b ,product c where a.id=b.id and a.pcode=c.pcode and a.id=?";
+		final static String BUY_INSERT = "insert into buy values(?,?,?,?,?,?,?,' ',' ',default,default)";
+		final static String BUY_ALL_SELECT = "select * from buy";
+		final static String BUY_LAST_ONUM = "select * from  (select * from buy order by onum desc) where rownum=1";
+		final static String BUY_LAST_PNUM = "select * from  (select * from payment order by pnum desc) where rownum=1";
+		final static String BUY_LIST_SELECT_ID ="select * from buy where id=?";
+		final static String BUY_LIST_IMG_SELECT_ID ="select * from buy a , product b where a.pcode=b.pcode and id=?";
+		final static String BUY_LIST_IMG_SELECT_ALL ="select * from buy a , product b where a.pcode=b.pcode order by onum";
+		final static String PAYMENT_INSERT = "insert into payment values(?,?,?,?,?,?,default)";
 		
 	//연결해주는 연결자
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{

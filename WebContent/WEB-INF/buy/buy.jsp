@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../common.jsp" %>
+<%@ include file="../../common.jsp" %>
 <title>제품 구매</title>
 <style>
 .container-fluid { width:1280px; }
@@ -24,43 +24,50 @@
 			<h3>구매 제품 정보</h3>
 			<table class="table">
 				<tbody>
-					<tr>
-						<th >상품명</th>
-						<td >123${pro.pname }
-							<input type="hidden" id="pname" name="pname" value="${pro.pname }">
-							<input type="hidden" id="cate" name="cate" value="${pro.cate }">
-							<input type="hidden" id="pcode" name="pcode" value="${pro.pcode }">
-							<input type="hidden" id="id" name="id" value="${user.id }">
-							<input type="hidden" id="name" name="name" value="${user.name }">
-							<input type="hidden" id="email" name="email" value="${user.email }">
-							<input type="hidden" id="utel" name="utel" value="${user.tel }">
-							<input type="hidden" id="uaddr" name="uaddr" value="${user.addr }">
-							<c:if test="${!empty bnum}">
-								<input type="hidden" id="bnum" name="bnum" value="${bnum }">
+					<c:forEach items="${basList }" var="bas" varStatus="cnt">
+						<tr>
+							<th >상품명</th>
+							<td >${bas.pname }
+							<input type="hidden" id="pname${cnt.count }" name="pname${cnt.count }" value="${bas.pname }">
+							<input type="hidden" id="pcode${cnt.count }" name="pcode${cnt.count }" value="${bas.pcode }">
+							<c:if test="${cnt.last }">
+							<input type="hidden" id="pcodelast" name="pcodelast" value="${cnt.count }">
 							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<th><label for="amount">수량</label></th>
-						<td>
-							456${pro.amount }
+							<c:if test="${!empty bas.bnum}">
+								<input type="hidden" id="bnum${cnt.count }" name="bnum${cnt.count }" value="${bas.bnum }">
+							</c:if>
+							</td>
+							<td rowspan="2" style="border-left:1px solid #ddd">상품 이미지</td>
 							
-						</td>
-					</tr>
-					<tr>
-						<th>구매 가격</th><td>${pro.price*1.4 }
-						<input type="hidden" id="price" name="price" value="${pro.price*1.4 }"></td>
-					</tr>
+							<td rowspan="2"><img src="${bas.img }" style="width:15vh;">
+							</td>
+						</tr>
+						<tr>
+							<th><label for="amount">수량</label></th>
+							<td>
+								${bas.bamount }
+							<input type="hidden" id="amount${cnt.count }" name="amount${cnt.count }" value="${bas.bamount }">
+							</td>
+						</tr>
+						<tr>
+							<th>구매 가격</th><td colspan="3">${bas.price }
+							<input type="hidden" id="price${cnt.count }" name="price${cnt.count }" value="${bas.price }"></td>
+						</tr>	
+					</c:forEach>
+						<tr>
+							<th>총 금액</th>
+							<td colspan="3"> ${totalmoney }
+								<input type="hidden" id="totalmoney" name="totalmoney" value="${totalmoney }">			
+								<input type="hidden" id="cate" name="cate" value="${pro.cate }">
+								<input type="hidden" id="id" name="id" value="${id }">
+								<input type="hidden" id="name" name="name" value="${user.name }">
+								<input type="hidden" id="email" name="email" value="${user.email }">
+								<input type="hidden" id="utel" name="utel" value="${user.tel }">
+								<input type="hidden" id="uaddr" name="uaddr" value="${user.address }">
 
-					<tr>
-						<th>상품 이미지</th>
-						<td><img src='${path1 }/product/${pro.pic2 }' alt="${pro.pname }"/></td>
-					</tr>
-					
-					<tr>
-						<th>총 금액</th>
-						<td> 원</td>
-					</tr>
+							
+							</td>
+						</tr>
 				</tbody>
 			</table>
 			
@@ -73,16 +80,16 @@
 					<tr>
 						<th>배송지 주소</th>
 						<td>
-							<input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" required /><br>
-							<input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" required /><br>
-							<input type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" class="form-control" required>
-							<button type="button" id="post_btn" onclick="findAddr()" class="btn btn-primary" style="margin-bottom:36px;">우편번호 검색</button>
+							<input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" value="${addr1 }" required /><br>
+							<input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" value="${addr2 }" required /><br>
+							<input type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" value="${postcode }" class="form-control" required>
+							<input type="button" id="post_btn" onclick="findAddr()" style="margin-bottom:36px;" value="우편번호 검색">
 						</td>
 					</tr>
 					<tr>
 						<th>받는 사람 연락처</th>
 						<td>			
-							<input type="tel" name="tel" id="tel" required>
+							<input type="tel" name="tel" id="tel" value="${user.tel }" required>
 						</td>
 					</tr>
 				</tbody>
@@ -151,22 +158,20 @@
 			var totalPay=0;
 			var proName;
 			$("#pay").click(function(){
-				proName = $("#pname").val();
-				if($("#amount").val()!="") {
-					totalPay = parseInt($("#price").val()) * parseInt($("#amount").val());
-				} else {
-					alert("구매할 수량을 입력하지 않으셨습니다.");
-					$("#amount").focus();
-					return;
-				}
+				if($("#address1").val()=="" || $("#address2").val()=="" || $("#postcode").val()=="") {
+					alert("주소를 다시 확인해 주세요");
+				}else{
+				proName = $("#pname"+1).val() +"외 상품들";
+				totalPay = parseInt($("#totalmoney").val());
+				alert(proName);
 				alert("결제할 금액 : "+totalPay);
 				//상품명_현재시간
 	 			var d = new Date();
 				var date = d.getFullYear()+''+(d.getMonth()+1)+''+d.getDate()+''+d.getHours()+''+d.getMinutes()+''+d.getSeconds();
 				IMP.init('imp31083748'); // 결제 API를 사용하기 위한 코드 입력!
 				IMP.request_pay({		//결제 요청
-					merchant_uid : $("#pname").val() + '_' + date, //상점 거래 ID
-					name : $("#pname").val(),				// 결제 명
+					merchant_uid : $("#pname"+1).val()+"외 상품들"+ '_' + date, //상점 거래 ID
+					name : $("#pname"+1).val()+"외 상품들",				// 결제 명
 					amount : totalPay,					// 결제금액
 					buyer_email : $("#email").val(), // 구매자 email
 					buyer_name : $("#name").val(),				// 구매자 이름
@@ -251,8 +256,10 @@
 					$("#payck").val("yes");
 					$("#payamount").val(totalPay);
 				});
+				}
 	 		});
 		});
+		
 		</script>
 		<script>
 		$(document).ready(function(){

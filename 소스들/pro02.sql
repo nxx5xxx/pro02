@@ -255,6 +255,8 @@ commit;
 --alter table product add ccode varchar2(8);
 --alter table product add img varchar2(1000);
 --alter table product add img2 varchar2(1000);
+
+/*
 select * from basket;
 desc basket;
 select a.bnum as bnum, a.pcode as pcode , a.bamount as  bamount, a.price as price,  from basket a , user1 b where a.id=b.id;
@@ -282,3 +284,41 @@ select a.bnum as bnum, a.id as id ,
 alter table basket drop column price;
 
 alter table basket add price NUMBER default 0 NOT NULL;
+*/
+
+select a.bnum as bnum, a.id as id , a.pcode as pcode ,c.pname as pname ,c.pamount as pamount, a.bamount as  bamount, (a.bamount*c.price) as price, c.img as img from basket a,user1 b , product c where a.pcode=c.pcode and a.id=b.id;
+
+select sum(a.bamount*c.price)as sumprice from  basket a,user1 b ,product c where a.id=b.id and a.pcode=c.pcode and a.id='kim';
+select * from user1;
+select * from user1 where id='kim';
+select * from buy order by onum;
+select * from product;
+desc buy;
+select * from payment;
+
+insert into buy values(?,?,?,?,?,?,?,'','',default,default);
+select * from  (select * from buy order by onum desc) where rownum=1;
+insert into buy values('10006','kim','30004','01022222222','경기도 고양시 장기동',1,50000,' ',' ',default,default);
+commit;
+
+--delete from buy where onum='10007';
+--delete from buy where onum='10008';
+--delete from buy where onum='10009';
+--delete from buy where onum='10010';
+--delete from buy where onum='10011';
+--delete from buy where onum='10012';
+--delete from buy where onum='10013';
+--delete from buy where onum='10014';
+--delete from buy where onum='10015';
+--delete from buy where onum='10016';
+--delete from payment where pnum='20006';
+--delete from buy where  TO_CHAR(odate,'YYYYMMDD')>'20230514';
+select * from  (select * from payment order by pnum desc) where rownum=1;
+insert into payment values(?,?,?,?,?,?,default);
+
+select * from product;
+--update product set pamount= pamount-? where pcode=?
+
+select * from buy a , product b where a.pcode=b.pcode and id='kim';
+
+select * from buy a , product b where a.pcode=b.pcode and id='kim';
