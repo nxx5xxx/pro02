@@ -317,6 +317,7 @@ select * from  (select * from payment order by pnum desc) where rownum=1;
 insert into payment values(?,?,?,?,?,?,default);
 
 select * from product;
+desc product;
 --update product set pamount= pamount-? where pcode=?
 
 select * from buy a , product b where a.pcode=b.pcode and id='kim';
@@ -324,3 +325,7 @@ select * from buy a , product b where a.pcode=b.pcode and id='kim';
 select * from buy a , product b where a.pcode=b.pcode order by onum;
 commit;
 select * from payment;
+select * from buy;
+
+desc category;
+desc notice;
