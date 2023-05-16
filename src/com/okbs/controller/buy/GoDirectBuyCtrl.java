@@ -1,7 +1,6 @@
 package com.okbs.controller.buy;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,32 +10,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.okbs.dto.Product;
 import com.okbs.dto.User1;
-import com.okbs.model.BasketDAO;
 import com.okbs.model.BuyDAO;
+import com.okbs.model.ProductDAO;
 import com.okbs.model.UserDAO;
-import com.okbs.vo.BasketVO;
 
-
-@WebServlet("/GoBuy.do")
-public class GoBuyCtrl extends HttpServlet {
+@WebServlet("/GoDirectBuy.do")
+public class GoDirectBuyCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		HttpSession session = request.getSession();
 		String sid = (String) session.getAttribute("id");
-		String prosw = "two";
+		String pcode = request.getParameter("pcode");
+		int amount = Integer.parseInt(request.getParameter("amount"));
+		String prosw = "one"; //한개일경우 한건만 구매목록
 		if(sid.equals(id)){
-			BasketDAO basdao = new BasketDAO();
+			Product pro =new Product();
+			ProductDAO prodao = new ProductDAO();
+			pro = prodao.selectPcode(pcode);
+			
+			/*BasketDAO basdao = new BasketDAO();
 			ArrayList<BasketVO> bas = new ArrayList<>();
-			bas = basdao.getMyBasket(sid);
+			bas = basdao.getMyBasket(sid);*/
 
-			request.setAttribute("basList", bas);
-			//총 합 가격을 갖고와야함
-			//select sum(a.bamount*c.price)as sumprice from  basket a,user1 b ,product c where a.id=b.id and a.pcode=c.pcode and a.id='kim';
-			BuyDAO buydao = new BuyDAO();
-			int totalmoney = buydao.totalMoney(sid);
+			request.setAttribute("pro", pro);
+			int totalmoney = pro.getPrice()*amount;
+			
+/*			BuyDAO buydao = new BuyDAO();
+			int totalmoney = buydao.totalMoney(sid);*/
+			request.setAttribute("amount", amount);
 			request.setAttribute("totalmoney", totalmoney);
 			
 			UserDAO userdao = new UserDAO();
@@ -64,6 +69,7 @@ public class GoBuyCtrl extends HttpServlet {
 			request.setAttribute("addr2", addr2);
 			request.setAttribute("user", user);
 			request.setAttribute("prosw", prosw);
+			
 			
 			
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/buy/buy.jsp?id="+id);

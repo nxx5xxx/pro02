@@ -12,7 +12,7 @@ import com.okbs.dto.Buy;
 import com.okbs.dto.Payment;
 import com.okbs.model.BuyDAO;
 
-@WebServlet("/AddPayment.do")
+@WebServlet("/InsertBuy.do")
 public class InsertBuyCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,25 +20,58 @@ public class InsertBuyCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		String prosw = request.getParameter("prosw");
 
-		int pcodelast = Integer.parseInt(request.getParameter("pcodelast"));
 		//System.out.println(request.getParameter("pcodelast")); //pcode의 마지막번째까지 갖고옴
 		String addr = "("+request.getParameter("postcode")+")  "+request.getParameter("address1")+"  , "+request.getParameter("address2");
 		String id = request.getParameter("id");
 		BuyDAO buydao = new BuyDAO();
 		//구매정보
-		for(int i=1;i<=pcodelast;i++){
+		if(prosw.equals("two") ){
+		int pcodelast = Integer.parseInt(request.getParameter("pcodelast"));
+			for(int i=1;i<=pcodelast;i++){
+				Buy buy = new Buy();
+				String bnum = request.getParameter("bnum"+i);
+				buy.setOnum(buydao.getOnum());
+				buy.setId(id);
+				//System.out.println(request.getParameter("pcode"+i));
+				buy.setPcode(request.getParameter("pcode"+i));
+				buy.setTel(request.getParameter("tel"));
+				buy.setAddr(addr);
+				int amount = Integer.parseInt(request.getParameter("amount"+i));
+				buy.setAmount(amount);
+				int price = Integer.parseInt(request.getParameter("price"+i));
+				buy.setPrice(price);
+				//buydao.insertBuy(buy);
+				
+				Payment pay = new Payment();
+				pay.setPnum(buydao.getPnum());
+				pay.setId(id);
+				pay.setOnum(buy.getOnum());
+				pay.setPaymtd(request.getParameter("ptype"));
+				pay.setCredit(request.getParameter("ptnum"));
+				pay.setPrice(price);
+				
+				int cnt = buydao.insertSales(buy, pay, bnum);
+				if(cnt>=3){
+					System.out.println("트랜잭션 처리 성공");
+				} else {
+					System.out.println("트랜잭션 처리 실패");
+				}
+				
+			}
+		}else{
 			Buy buy = new Buy();
-			String bnum = request.getParameter("bnum"+i);
+
 			buy.setOnum(buydao.getOnum());
 			buy.setId(id);
 			//System.out.println(request.getParameter("pcode"+i));
-			buy.setPcode(request.getParameter("pcode"+i));
+			buy.setPcode(request.getParameter("pcode"));
 			buy.setTel(request.getParameter("tel"));
 			buy.setAddr(addr);
-			int amount = Integer.parseInt(request.getParameter("amount"+i));
+			int amount = Integer.parseInt(request.getParameter("amount"));
 			buy.setAmount(amount);
-			int price = Integer.parseInt(request.getParameter("price"+i));
+			int price = Integer.parseInt(request.getParameter("price"));
 			buy.setPrice(price);
 			//buydao.insertBuy(buy);
 			
@@ -50,14 +83,16 @@ public class InsertBuyCtrl extends HttpServlet {
 			pay.setCredit(request.getParameter("ptnum"));
 			pay.setPrice(price);
 			
-			int cnt = buydao.insertSales(buy, pay, bnum);
-			if(cnt>=3){
+			int cnt = buydao.insertSales2(buy, pay);
+			if(cnt>=2){
 				System.out.println("트랜잭션 처리 성공");
 			} else {
 				System.out.println("트랜잭션 처리 실패");
 			}
-			
 		}
+		
+		response.sendRedirect("GoBuyList.do?id="+id);
+		
 		
 	}
 }

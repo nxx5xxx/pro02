@@ -20,10 +20,12 @@
 	<div class="container-fluid">
 		<h2>제품 구매</h2>
 		<p>${msg }</p>
-		<form action="${path1 }/AddPayment.do" method="POST" onsubmit="return payCheck(this)">
+		<form action="${path1 }/InsertBuy.do" method="POST" onsubmit="return payCheck(this)">
 			<h3>구매 제품 정보</h3>
 			<table class="table">
 				<tbody>
+					<c:if test="${prosw=='two' }">
+					<input type="hidden" id="prosw" name="prosw" value="two">
 					<c:forEach items="${basList }" var="bas" varStatus="cnt">
 						<tr>
 							<th >상품명</th>
@@ -54,11 +56,39 @@
 							<input type="hidden" id="price${cnt.count }" name="price${cnt.count }" value="${bas.price }"></td>
 						</tr>	
 					</c:forEach>
+					</c:if>
+					<!-- 상품한개일때 -->
+					<c:if test="${prosw=='one' }">
+					<tr>
+							<th >상품명</th>
+							<td >${pro.pname }
+							<input type="hidden" id="pname" name="pname" value="${pro.pname }">
+							<input type="hidden" id="pcode" name="pcode" value="${pro.pcode }">
+							<input type="hidden" id="prosw" name="prosw" value="one">
+
+							</td>
+							<td rowspan="2" style="border-left:1px solid #ddd">상품 이미지</td>
+							
+							<td rowspan="2"><img src="${pro.img }" style="width:15vh;">
+							</td>
+						</tr>
+						<tr>
+							<th><label for="amount">수량</label></th>
+							<td>
+								${amount }
+							<input type="hidden" id="amount" name="amount" value="${amount }">
+							</td>
+						</tr>
+						<tr>
+							<th>구매 가격</th><td colspan="3">${totalmoney }
+							<input type="hidden" id="price" name="price" value="${totalmoney }"></td>
+						</tr>	
+					</c:if>
 						<tr>
 							<th>총 금액</th>
 							<td colspan="3"> ${totalmoney }
 								<input type="hidden" id="totalmoney" name="totalmoney" value="${totalmoney }">			
-								<input type="hidden" id="cate" name="cate" value="${pro.cate }">
+								<%-- <input type="hidden" id="cate" name="cate" value="${pro.cate }"> --%>
 								<input type="hidden" id="id" name="id" value="${id }">
 								<input type="hidden" id="name" name="name" value="${user.name }">
 								<input type="hidden" id="email" name="email" value="${user.email }">

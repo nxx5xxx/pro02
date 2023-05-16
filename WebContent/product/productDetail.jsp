@@ -35,6 +35,7 @@ input{width:100%}
 <div class="wrap_bt">
 	<div class="table_wrap">
 	<h1>${product.pname}</h1>
+	<form action="${path1 }/GoDirectBuy.do?id=${id }" method="post">
 		<table>
 		<c:if test="${product.pdesc != null}">
 			<tr>
@@ -43,14 +44,15 @@ input{width:100%}
 		</c:if>
 				<tr>
 			<th>상품가격</th>
-			<td>${product.price}</td>
+			<td>${product.price}
+			<input type="hidden" name="pcode" value="${product.pcode}"></td>
 		</tr>
 		<tr>
 			<th>재고량</th>
 			<c:if test="${product.pamount <=0}"><td>품절</td></c:if>
 			<c:if test="${product.pamount >0}">
 			<td>${product.pamount} 개
-			<c:if test="${id != null && id != 'admin' }"><br><input type="text" value="1" id="basamount" style="text-align:right" class="inw20"><br><input type="button" value="장바구니" onclick="insertbasket()" class="inw10"><input type="button" value="바로구매" class="inw10"></c:if></td>
+			<c:if test="${id != null && id != 'admin' }"><br><input type="text" name="amount" value="1" id="basamount" style="text-align:right" class="inw20"><br><input type="button" value="장바구니" onclick="insertbasket()" class="inw10"><input type="submit" value="바로구매" class="inw10"></c:if></td>
 			</c:if>
 		</tr>
 		<c:if test="${product.img != 'img/proimg/null'}">
@@ -72,6 +74,7 @@ input{width:100%}
 			<td colspan="2"><input type="button" value="뒤로가기" onclick="history.go(-1)"></td>
 		</tr>
 		</table>
+	</form>
 		<script>
 		function insertbasket(){
 			//var params = { cate1:$("#cate1").val() }

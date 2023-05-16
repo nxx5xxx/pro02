@@ -64,7 +64,11 @@ public class Oracle11 {
 		final static String BUY_LIST_SELECT_ID ="select * from buy where id=?";
 		final static String BUY_LIST_IMG_SELECT_ID ="select * from buy a , product b where a.pcode=b.pcode and id=?";
 		final static String BUY_LIST_IMG_SELECT_ALL ="select * from buy a , product b where a.pcode=b.pcode order by onum";
+		final static String BUY_CHANGE_POST_STATUS = "update buy set ename=?, ecode=?, status=? where onum=?";
+		
 		final static String PAYMENT_INSERT = "insert into payment values(?,?,?,?,?,?,default)";
+		
+		
 		
 	//연결해주는 연결자
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{

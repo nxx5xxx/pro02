@@ -43,6 +43,7 @@
 </nav>
   <hr style="clear:both">
     <div class="fix_menubar">
+   <!--  <input type="checkbox" id="hidemenu" name="hidemenu" class="hide_chkbox" style="display:none"><label for="hidemenu" class="hideitem" title="메뉴접기">메뉴접기</label> -->
         <ul>
             <li><a href="${path }" class="item0" title="홈으로">홈</a></li>
             <li><input type="checkbox" id="category" name="category" class="cate_chkbox" style="display:none"><label for="category" class="item1" title="상품목록">스위치메뉴</label>
@@ -67,8 +68,8 @@
             	</div>
             </li>
             <li><a href="${path }/NoticeList.do" class="item2" title="게시판">게시판</a></li>
-            <li><a href="" class="item3" title="장바구니">장바구니</a></li>
-            <li><a href="" class="item4" title="주문내역">주문내역</a></li>
+            <li><a href="${path }/GoBasket.do?id=${id}" class="item3" title="장바구니">장바구니</a></li>
+            <li><a href="${path }/GoBuyList.do?id=${id}" class="item4" title="주문내역">주문내역</a></li>
             <li><a href="#" class="item5" title="페이지상단">페이지상단</a></li>
             <li><a href="#bottom" class="item6" title="페이지하단">페이지하단</a></li>
         </ul>

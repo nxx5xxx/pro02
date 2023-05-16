@@ -321,4 +321,6 @@ select * from product;
 
 select * from buy a , product b where a.pcode=b.pcode and id='kim';
 
-select * from buy a , product b where a.pcode=b.pcode and id='kim';
+select * from buy a , product b where a.pcode=b.pcode order by onum;
+commit;
+select * from payment;

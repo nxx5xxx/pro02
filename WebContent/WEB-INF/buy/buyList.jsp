@@ -26,8 +26,11 @@ th,td {padding:1.1vh}
 <%@ include file="/header.jsp" %>
 <div class="wrap_bt">
 	<div class="table_wrap">
-	<span class="noti">나의 구매내역</span>
-		<table <c:if test="${id=='admin' }">style="width:90vw; font-size:1.2vh"</c:if>>
+				
+
+	<c:if test="${id=='admin' }"><span class="noti">고객 구매내역</span></c:if>		
+	<c:if test="${id!='admin' }"><span class="noti">나의 구매내역</span></c:if>
+		<table <c:if test="${id=='admin' }">style="width:85vw; font-size:1.4vh"</c:if>>
 		<thead>
 				<tr>
 					<th>순번</th>
@@ -61,15 +64,54 @@ th,td {padding:1.1vh}
 					<td>${buy.addr }</td>
 					<td>${buy.amount }개</td>
 					<td>${buy.price }</td>
-					<td>${buy.ename }</td>
-					<td>${buy.ecode }</td>
-					<td>${buy.status }</td>
+						<c:if test="${id=='admin' }">
+							<td><input type="text" name="ename${cnt.count }" id="ename${cnt.count }" value="${buy.ename }"></td>
+							<td><input type="text" name="ecode${cnt.count }" id="ecode${cnt.count }" value="${buy.ecode }"></td>
+							<td><select name="status${cnt.count }" id="status${cnt.count }" >
+							<option value="${buy.status }">${buy.status }</option>
+							<option value="배송전">배송전</option>
+							<option value="배송중">배송중</option>
+							<option value="배송완료">배송완료</option>
+							<option value="구매완료">구매완료</option>
+							</select>
+							<input type="button" name="changepost" id="changepost" onclick="changepost(${cnt.count },${buy.onum })" value="배송변경">
+							</td>
+						</c:if>
+							<c:if test="${id!='admin' }">
+							<td>${buy.ename }</td>
+							<td>${buy.ecode }</td>
+							<td>${buy.status }
+							<c:if test="${buy.status=='배송완료' || buy.status=='배송중' }">
+							<input type="button" name="changepost" id="changepost" onclick="" value="구매완료">
+							</c:if>
+							</td>
+						</c:if>
 					<td>${buy.odate }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		</table>
 		<a href="${path1 }/GoBuy.do?id=${id}" style="font-size:18px ; line-height:50px">구매하기</a>
+		<script>
+		function changepost(numb,onum){
+			alert(numb+"번째 줄 배송상태 변경완료");
+			alert(onum+"주문번호 배송상태 변경완료");
+			alert($("#status"+numb).val());
+			$.ajax({
+				url:"${path1 }/ChangePostStatus.do",
+				dataType:"json",
+				type:"post",
+				data:{ename:$("#ename"+numb).val() , ecode:$("#ecode"+numb).val() , onum:onum, status:$("#status"+numb).val()},
+				encType:"UTF-8",
+				success:function(result){
+					console.log(result);
+					//var 
+				}
+			});
+			location.reload(); //새로고침 명령어
+		}
+		
+		</script>
 	</div>
 
 
