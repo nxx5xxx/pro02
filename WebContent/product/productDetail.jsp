@@ -63,6 +63,19 @@ input{width:100%}
 				</td>
 			</tr>
 		</c:if>
+		<tr>
+			<th colspan="2" style="text-align:center;border:none">
+			구매후기
+			</th>
+		</tr>
+		<tr>
+			<th>
+			~님
+			</th>
+			<td>
+			<span style="float:left">만족도</span> <span>후기문</span>
+			</td>
+		</tr>
 		<c:if test="${product.img2 != 'img/proimg/null'}">
 			<tr>
 				<th colspan="2" style="text-align:center">

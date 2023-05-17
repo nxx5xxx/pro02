@@ -10,7 +10,7 @@ public class Oracle11 {
 	static String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	static String user = "pro02";
 	static String password = "1234";
-		final static String NOTICE_SELECT_ALL = "select * from notice";
+		final static String NOTICE_SELECT_ALL = "select * from notice order by idx";
 		final static String NOTICE_SELECT_ONE = "select * from notice where idx=?";
 		final static String NOTICE_READCOUNT_UPDATE = "update notice set cnt=cnt+1 where idx=?";
 		final static String NOTICE_INSERT = "insert into notice values(noti_seq.nextval,?,?,?,?,default,default)";
@@ -65,7 +65,11 @@ public class Oracle11 {
 		final static String BUY_LIST_IMG_SELECT_ID ="select * from buy a , product b where a.pcode=b.pcode and id=?";
 		final static String BUY_LIST_IMG_SELECT_ALL ="select * from buy a , product b where a.pcode=b.pcode order by onum";
 		final static String BUY_CHANGE_POST_STATUS = "update buy set ename=?, ecode=?, status=? where onum=?";
+		final static String BUY_CHANGE_CONFIRM ="update buy set status=? where onum=?";
+		final static String BUY_SELECT_ONUM = "select * from buy where onum=?";
 		
+		final static String REVIEW_INSERT = "insert into review values(?,?,?,default,?,?)";
+		final static String REVIEW_SELECT_ROWNUM = "select * from (select * from review order by bno desc) where rownum=1";
 		final static String PAYMENT_INSERT = "insert into payment values(?,?,?,?,?,?,default)";
 		
 		

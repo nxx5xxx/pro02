@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.okbs.dto.Buy;
 import com.okbs.dto.Payment;
+import com.okbs.dto.Review;
 import com.okbs.vo.BasketVO;
 import com.okbs.vo.BuyVO;
 
@@ -348,5 +349,78 @@ public class BuyDAO {
 			System.out.println("식별할수 없는 오류가 발생했습니다.");
 		}
 		Oracle11.close(pstmt, conn);
+	}
+	
+	public void confirmBuy(Buy buy){
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.BUY_CHANGE_CONFIRM);
+			pstmt.setString(1, buy.getStatus());
+			pstmt.setString(2, buy.getOnum());
+			pstmt.executeUpdate();
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("오라클JDBC 파일이 잘못되었습니다");
+		} catch(SQLException e) {
+			System.out.println("SQL구문이 잘못되었습니다");
+		} catch(Exception e){
+			System.out.println("식별할수 없는 오류가 발생했습니다.");
+		}
+		Oracle11.close(pstmt, conn);
+	}
+	public String buyID(String onum){
+		String id = "";
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.BUY_SELECT_ONUM);
+			pstmt.setString(1, onum);
+			rs =pstmt.executeQuery();
+			if(rs.next()){
+				id = rs.getString("id");
+			}
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("오라클JDBC 파일이 잘못되었습니다");
+		} catch(SQLException e) {
+			System.out.println("SQL구문이 잘못되었습니다");
+		} catch(Exception e){
+			System.out.println("식별할수 없는 오류가 발생했습니다.");
+		}
+		Oracle11.close(rs, pstmt, conn);
+		return id;
+	}
+	public void insertReview(Review rev){
+		int bnoint = 40001;
+		String bno ="";
+		int sw=0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.REVIEW_SELECT_ROWNUM);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				bnoint = Integer.parseInt(rs.getString("bno")) + 1;
+			}
+			bno = bnoint + "";
+			//나중에 bno값이 없을때 bno 40001로 자동 생성 실행해야함
+			pstmt = conn.prepareStatement(Oracle11.REVIEW_INSERT);
+			pstmt.setString(1, bno);
+			pstmt.setString(2, rev.getId());
+			pstmt.setString(3, rev.getOnum());
+			pstmt.setString(4, rev.getB_review());
+			pstmt.setInt(5, rev.getB_score());
+			sw = pstmt.executeUpdate();
+			if(sw>0){
+				System.out.println("리뷰등록 완료");
+			}
+			
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("오라클JDBC 파일이 잘못되었습니다");
+		} catch(SQLException e) {
+			System.out.println("SQL구문이 잘못되었습니다");
+		} catch(Exception e){
+			System.out.println("식별할수 없는 오류가 발생했습니다.");
+		}
+		Oracle11.close(rs, pstmt, conn);
 	}
 }

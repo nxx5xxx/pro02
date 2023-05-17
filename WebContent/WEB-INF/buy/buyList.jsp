@@ -69,10 +69,11 @@ th,td {padding:1.1vh}
 							<td><input type="text" name="ecode${cnt.count }" id="ecode${cnt.count }" value="${buy.ecode }"></td>
 							<td><select name="status${cnt.count }" id="status${cnt.count }" >
 							<option value="${buy.status }">${buy.status }</option>
+							<option value="">---------------</option>
 							<option value="배송전">배송전</option>
 							<option value="배송중">배송중</option>
 							<option value="배송완료">배송완료</option>
-							<option value="구매완료">구매완료</option>
+							<option value="구매확정">구매확정</option>
 							</select>
 							<input type="button" name="changepost" id="changepost" onclick="changepost(${cnt.count },${buy.onum })" value="배송변경">
 							</td>
@@ -80,9 +81,12 @@ th,td {padding:1.1vh}
 							<c:if test="${id!='admin' }">
 							<td>${buy.ename }</td>
 							<td>${buy.ecode }</td>
-							<td>${buy.status }
+							<td><span id="buyresult">${buy.status }</span>
 							<c:if test="${buy.status=='배송완료' || buy.status=='배송중' }">
-							<input type="button" name="changepost" id="changepost" onclick="" value="구매완료">
+							<input type="button" name="buysuccess" id="buysuccess" onclick="buysuccess(${cnt.count },${buy.onum })" value="구매확정">
+							</c:if>
+							<c:if test="${buy.status=='구매확정' }">
+							<input type="button" name="changepost" id="changepost" onclick="goreview(${buy.onum })" value="후기작성">
 							</c:if>
 							</td>
 						</c:if>
@@ -93,22 +97,54 @@ th,td {padding:1.1vh}
 		</table>
 		<a href="${path1 }/GoBuy.do?id=${id}" style="font-size:18px ; line-height:50px">구매하기</a>
 		<script>
+		//관리자 배송상태 변경
 		function changepost(numb,onum){
+			
+			//alert(onum+"주문번호 배송상태 변경완료");
+			//alert($("#status"+numb).val());
+			if($("#status"+numb).val()!=""){
 			alert(numb+"번째 줄 배송상태 변경완료");
-			alert(onum+"주문번호 배송상태 변경완료");
-			alert($("#status"+numb).val());
-			$.ajax({
-				url:"${path1 }/ChangePostStatus.do",
-				dataType:"json",
-				type:"post",
-				data:{ename:$("#ename"+numb).val() , ecode:$("#ecode"+numb).val() , onum:onum, status:$("#status"+numb).val()},
-				encType:"UTF-8",
-				success:function(result){
-					console.log(result);
-					//var 
-				}
-			});
-			location.reload(); //새로고침 명령어
+				$.ajax({
+					url:"${path1 }/ChangePostStatus.do",
+					dataType:"json",
+					type:"post",
+					data:{ename:$("#ename"+numb).val() , ecode:$("#ecode"+numb).val() , onum:onum, status:$("#status"+numb).val()},
+					encType:"UTF-8",
+					success:function(result){
+						console.log(result);
+						//var 
+					}
+				});
+				location.reload(); //새로고침 명령어
+			}else{
+				alert(numb+"번째 줄 배송상태를 확인해주세요");
+			}
+		}
+		///////////////////////////////
+		//구매확정
+		function buysuccess(x,onum){
+			if(confirm("정말로 구매 확정 하시겠습니까?")==true){
+				alert("구매확정하였습니다");
+				
+				$.ajax({
+					url:"${path1 }/ChangePostStatus.do",
+					dataType:"json",
+					type:"post",
+					encType:"UTF-8",
+					data:{onum:onum}
+				})
+				
+			}else{
+				alert("취소하였습니다");
+			}
+		}
+		/////////////////////////////
+		//리뷰작성
+		function goreview(onum){
+			var popX = (window.screen.width / 2) - (500 / 2);
+			var popY= (window.screen.height / 2) - (360 / 2);
+			var onum = onum
+			window.open("${path1 }/GoinsertReview.do?onum="+onum,"리뷰쓰기","status=no,toolbar=no,scrollbars=no, width=550, height=360,left="+ popX + ", top="+ popY);
 		}
 		
 		</script>

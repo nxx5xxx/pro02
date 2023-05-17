@@ -326,6 +326,29 @@ select * from buy a , product b where a.pcode=b.pcode order by onum;
 commit;
 select * from payment;
 select * from buy;
+select * from buy where onum='10001';
+desc buy;
 
 desc category;
 desc notice;
+
+select * from notice order by idx;
+select * from review order by bno ;
+delete from review where bno='40009';
+commit;
+
+--bno 받아와서 내림차순 - > 맨위에 하나만 그리고 그 값을 받아와서 int로 바꾸고 +1 그다음 다시 스트링으로
+select * from (select * from review order by bno desc) where rownum=1;
+desc review;
+
+--update review set bno= '40001' where id='park';
+--update review set bno= '40002' where id='son';
+select * from basket; -- 5*****
+select * from buy; -- 1*****
+select * from notice; -- idx 123456
+select * from payment; -- 2*****
+select * from product; -- 3*****
+select * from user1;
+commit;
+
+--update buy set status='후기보기' where onum='10001';

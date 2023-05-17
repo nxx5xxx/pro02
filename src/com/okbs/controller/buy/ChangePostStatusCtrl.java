@@ -23,9 +23,17 @@ public class ChangePostStatusCtrl extends HttpServlet {
 		String ecode = request.getParameter("ecode");
 		String onum = request.getParameter("onum");
 		String status = request.getParameter("status");
-		System.out.println(request.getParameter("ename"));
-		System.out.println(request.getParameter("ecode"));
+		//ajax로 잘넘겨받았나 테스트
+		//System.out.println(request.getParameter("ename"));
+		//System.out.println(request.getParameter("ecode"));
 		System.out.println(request.getParameter("onum"));
+		if(ename==null && ecode == null ){
+			Buy buy = new Buy();
+			BuyDAO buydao = new BuyDAO();
+			buy.setStatus(status);
+			buy.setOnum(onum);
+			buydao.confirmBuy(buy);
+		}else{
 		Buy buy = new Buy();
 		BuyDAO buydao = new BuyDAO();
 		buy.setEcode(ecode);
@@ -33,6 +41,9 @@ public class ChangePostStatusCtrl extends HttpServlet {
 		buy.setOnum(onum);
 		buy.setStatus(status);
 		buydao.changePostStatus(buy);
+		}
+
+
 		
 	}
 
