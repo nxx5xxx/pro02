@@ -70,6 +70,8 @@ public class Oracle11 {
 		
 		final static String REVIEW_INSERT = "insert into review values(?,?,?,default,?,?)";
 		final static String REVIEW_SELECT_ROWNUM = "select * from (select * from review order by bno desc) where rownum=1";
+		final static String REVIEW_SELECT_FROM_PCODE="select a.bno as bno , a.id as id , a.onum as onum ,a.b_date as b_date , a.b_review as b_review ,a.b_score as b_score from review a, buy b where a.onum = b.onum and b.pcode=?";
+		
 		final static String PAYMENT_INSERT = "insert into payment values(?,?,?,?,?,?,default)";
 		
 		

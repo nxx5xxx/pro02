@@ -423,4 +423,31 @@ public class BuyDAO {
 		}
 		Oracle11.close(rs, pstmt, conn);
 	}
+	
+	public ArrayList<Review> getReview(String pcode){
+		ArrayList<Review> revList = new ArrayList<>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.REVIEW_SELECT_FROM_PCODE);
+			pstmt.setString(1, pcode);
+			rs =pstmt.executeQuery();
+			while(rs.next()){
+				Review rev = new Review();
+				rev.setBno(rs.getString("bno"));
+				rev.setId(rs.getString("id"));
+				rev.setOnum(rs.getString("onum"));
+				rev.setB_date(rs.getString("b_date"));
+				rev.setB_review(rs.getString("b_review"));
+				rev.setB_score(rs.getInt("b_score"));
+				revList.add(rev);
+			}
+		} catch(ClassNotFoundException e) {
+			System.out.println("오라클JDBC 파일이 잘못되었습니다");
+		} catch(SQLException e) {
+			System.out.println("SQL구문이 잘못되었습니다");
+		} catch(Exception e){
+			System.out.println("식별할수 없는 오류가 발생했습니다.");
+		}
+		return revList;
+	}
 }

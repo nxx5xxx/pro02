@@ -68,14 +68,25 @@ input{width:100%}
 			구매후기
 			</th>
 		</tr>
+		<c:forEach items="${revList }" var="rev" varStatus="cnt">
 		<tr>
 			<th>
-			~님
+			${rev.id }님
 			</th>
 			<td>
-			<span style="float:left">만족도</span> <span>후기문</span>
+			<span style="float:left">
+			<c:set var="score" value="${rev.b_score }" />
+			<c:choose>
+				<c:when test="${score==1 }">★☆☆☆☆</c:when>
+				<c:when test="${score==2 }">★★☆☆☆</c:when>
+				<c:when test="${score==3 }">★★★☆☆</c:when>
+				<c:when test="${score==4 }">★★★★☆</c:when>
+				<c:when test="${score==5 }">★★★★★</c:when>
+			</c:choose></span>
+			<span>${rev.b_review }</span>
 			</td>
 		</tr>
+		</c:forEach>
 		<c:if test="${product.img2 != 'img/proimg/null'}">
 			<tr>
 				<th colspan="2" style="text-align:center">

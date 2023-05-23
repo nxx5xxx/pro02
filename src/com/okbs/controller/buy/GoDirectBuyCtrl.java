@@ -21,12 +21,21 @@ public class GoDirectBuyCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String id = request.getParameter("id");
 		HttpSession session = request.getSession();
 		String sid = (String) session.getAttribute("id");
+		
+	
+		
 		String pcode = request.getParameter("pcode");
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		String prosw = "one"; //한개일경우 한건만 구매목록
+		
+		System.out.println(id);
+		System.out.println(sid);
+		System.out.println(pcode);
+		
 		if(sid.equals(id)){
 			Product pro =new Product();
 			ProductDAO prodao = new ProductDAO();

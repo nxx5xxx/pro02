@@ -84,6 +84,7 @@ th,td {padding:1.1vh}
 							<td><span id="buyresult">${buy.status }</span>
 							<c:if test="${buy.status=='배송완료' || buy.status=='배송중' }">
 							<input type="button" name="buysuccess" id="buysuccess" onclick="buysuccess(${cnt.count },${buy.onum })" value="구매확정">
+							<input type="hidden" name="buyok" id="buyok" value="구매확정">
 							</c:if>
 							<c:if test="${buy.status=='구매확정' }">
 							<input type="button" name="changepost" id="changepost" onclick="goreview(${buy.onum })" value="후기작성">
@@ -131,7 +132,7 @@ th,td {padding:1.1vh}
 					dataType:"json",
 					type:"post",
 					encType:"UTF-8",
-					data:{onum:onum}
+					data:{onum:onum , status:$("#buyok").val()}
 				})
 				
 			}else{

@@ -349,6 +349,8 @@ select * from notice; -- idx 123456
 select * from payment; -- 2*****
 select * from product; -- 3*****
 select * from user1;
+select * from review;
+desc review;
 commit;
-
+select a.bno as bno , a.id as id , a.onum as onum ,a.b_date as b_date , a.b_review as b_review ,a.b_score as b_score from review a, buy b where a.onum = b.onum and b.pcode='30001' ;
 --update buy set status='후기보기' where onum='10001';

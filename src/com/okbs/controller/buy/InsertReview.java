@@ -55,7 +55,7 @@ public class InsertReview extends HttpServlet {
 		BuyDAO buydao = new BuyDAO();
 		buydao.insertReview(rev);
 		
-		String status = "후기보기";
+		String status = "후기완료";
 		Buy buy = new Buy();
 		buy.setStatus(status);
 		
