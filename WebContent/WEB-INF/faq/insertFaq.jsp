@@ -25,40 +25,34 @@ input{width:100%}
 </head>
 
 <%@ include file="/header.jsp" %>
-<!-- 파일을 보내려면 멀티미디어데이터라
-enctype=multipart/form-data 를써줘야한다
-enctype는 인코딩 타입이라는의미
-이것을 하기위해서는 cos.jar가 필요하다
-<form action="" method="" enctype="multipart/form-data">
 
-첨부파일 올리기
-<label for="file1"> 첨부파일 </label>
-<input type="file" name="file" id="file1" >
-accept="*.pdf, *png, *.jpg" 이걸쓸경우  이파일들만 가능하다는 의미 -->
 <body>
 <div class="wrap_bt">
 	<div class="table_wrap">
-	<h1>자주묻는질문</h1>
-	<form action="${path1 }/InsertNotice.do" method="post" enctype="multipart/form-data">
+	<h1>공지사항</h1>
+	<form action="${path1 }/InsertFaq.do" method="post" >
 		<table>
+		<tr>
+			<th>카테고리</th>
+			<td>
+			<select name="category" >
+				<option value="기타">기타</option>
+				<option value="배송관련">배송관련</option>
+				<option value="상품관련">상품관련</option>
+				<option value="결제관련">결제관련</option>
+			</select>					
+			</td>
+		</tr>
 		<tr>	
 			<th><label for="title">제목</label></th>
-			<td><input type="text" name="title" id="title" placeholder="제목을 입력하세용"></td>
+			<td><input type="text" name="title" id="title" placeholder="제목을 입력하세용" required></td>
 		</tr>
 		<tr>
 			<th><label for="content">내용</label></th>
-			<td><textarea rows="10" name="content" id="content" placeholder="내용을 입력하세요"></textarea></td>
+			<td><textarea rows="10" name="content" id="content" placeholder="내용을 입력하세요" required></textarea></td>
 		</tr>
 		<tr>
-			<th><label for="file1">첨부파일</label></th>
-			<td><input type="file" name="file" id="file1"></td>
-		</tr>
-		<tr>
-			<th><label for="author">글쓴이</label></th>
-			<td><input type="text" name="author" id="author" value="${id }" readonly></td>
-		</tr>
-		<tr>
-			<td><input type="button" value="목록으로" onclick="location.href='${path1 }/GoFaqList.do'"></td>
+			<td><input type="button" value="목록으로" onclick="location.href='${path1 }/NoticeList.do'"></td>
 			<td><input type="reset" value="초기화"><input type="submit" value="등록"></td>
 		</tr>
 		</table>

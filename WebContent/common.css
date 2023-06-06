@@ -24,8 +24,10 @@
         .fix_menubar>ul>li>a.item2 {background-image: url("img/rightbar/notice.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item3 {background-image: url("img/rightbar/basket.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item4 {background-image: url("img/rightbar/truck.png");border:1px solid black;}
-        .fix_menubar>ul>li>a.item5 {background-image: url("img/rightbar/arrow_up.png");border:1px solid black;}
-        .fix_menubar>ul>li>a.item6 {background-image: url("img/rightbar/arrow_down.png");border:1px solid black;transition-duration: 1s;}
+        .fix_menubar>ul>li>a.item5 {background-image: url("img/rightbar/qa.png");border:1px solid black;}
+        .fix_menubar>ul>li>a.item6 {background-image: url("img/rightbar/faq.png");border:1px solid black;}
+        .fix_menubar>ul>li>a.item7 {background-image: url("img/rightbar/arrow_up.png");border:1px solid black;}
+        .fix_menubar>ul>li>a.item8 {background-image: url("img/rightbar/arrow_down.png");border:1px solid black;transition-duration: 1s;}
 	
 		
 		

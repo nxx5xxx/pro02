@@ -75,6 +75,12 @@ public class Oracle11 {
 		final static String PAYMENT_INSERT = "insert into payment values(?,?,?,?,?,?,default)";
 		
 		
+		final static String FAQ_LIST = "select * from faq";
+		final static String FAQ_SELECT_ONE = "select * from faq where fno=?";
+		final static String FAQ_SELECT_ROWNUM = "select * from (select * from faq order by fno desc) where rownum=1";
+		final static String FAQ_INSERT = "insert into faq values(?,?,?,?)";
+		final static String FAQ_UPDATE = "update faq set title=?,content=?,category=? where fno=?";
+		
 		
 	//연결해주는 연결자
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{

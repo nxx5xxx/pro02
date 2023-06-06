@@ -350,7 +350,21 @@ select * from payment; -- 2*****
 select * from product; -- 3*****
 select * from user1;
 select * from review;
+
 desc review;
 commit;
 select a.bno as bno , a.id as id , a.onum as onum ,a.b_date as b_date , a.b_review as b_review ,a.b_score as b_score from review a, buy b where a.onum = b.onum and b.pcode='30001' ;
 --update buy set status='후기보기' where onum='10001';
+
+
+-- 자주묻는질문
+-- create table faq(fno char(5) primary key,catergory varchar2(100) not null,content varchar2(1000) not null,fno2 char(5) not null,lev char(2) default 1);
+
+create table faq(fno char(5) primary key,category varchar2(100) not null,title varchar(100) not null,content varchar2(1000) not null);
+insert into faq values('70001','배송관련','배송은 언제쯤 도착하나요?','입금이 완료된 시점에서 3~5정도 소요됩니다');
+select * from faq;
+commit;
+insert into faq values('70002','상품관련','판매하는 제품이 새 제품인가요?','저희 소프라노에서 판매하는 리퍼상품(리퍼 키테고리, 상품명에 리퍼 표기 된 제품) 외
+모든 제품은 미개봉, 새 제품, 정식 발매 품목입니다.');
+
+select * from (select * from faq order by fno desc) where rownum=1;

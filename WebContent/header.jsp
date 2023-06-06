@@ -70,8 +70,10 @@
             <li><a href="${path }/NoticeList.do" class="item2" title="게시판">게시판</a></li>
             <li><a href="${path }/GoBasket.do?id=${id}" class="item3" title="장바구니">장바구니</a></li>
             <li><a href="${path }/GoBuyList.do?id=${id}" class="item4" title="주문내역">주문내역</a></li>
-            <li><a href="#" class="item5" title="페이지상단">페이지상단</a></li>
-            <li><a href="#bottom" class="item6" title="페이지하단">페이지하단</a></li>
+            <li><a href="" class="item5" title="QNA">QNA</a></li>
+            <li><a href="${path }/GoFaqList.do" class="item6" title="자주묻는질문">FAQ</a></li>
+            <li><a href="#" class="item7" title="페이지상단">페이지상단</a></li>
+            <li><a href="#bottom" class="item8" title="페이지하단">페이지하단</a></li>
         </ul>
     </div>
 </header>
