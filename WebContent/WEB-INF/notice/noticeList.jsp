@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글</title>
+<title>공지사항 목록</title>
 <%@ include file="/common.jsp" %>
 <style>
 .table_wrap {display : block; text-align:center;  margin-bottom:5vw;}
@@ -35,9 +35,9 @@ th,td {padding:1.1vh}
 				</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${notiList }" var="note">
+			<c:forEach items="${notiList }" var="note" varStatus="cnt">
 				<tr>
-					<td>${note.idx }</td>
+					<td>${notiList.size() - cnt.index}</td>
 					<td><a href="${path1 }/NoticeDetail.do?idx=${note.idx }">${note.title}</a></td>
 					<td>${note.author}</td>
 					<td>${note.resdate}</td>

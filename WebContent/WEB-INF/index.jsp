@@ -21,15 +21,26 @@
 </head>
 <body>
 <%@ include file="/header.jsp" %>
-<div class="wrap_bt">
-	<h2>제작자 : ${author }</h2>
+<div class="wrap_bt" style="text-align:center">
+	<%-- <h2>제작자 : ${author }</h2> --%>
 	<h1 style="text-align:center">${alert }</h1>
 	<c:if test="${id=='admin' }">
-	<a href="${path1 }/admin/memberList.jsp">전체고객목록보기</a>
-	<a href="${path1 }/board/board.jsp">전체게시글보기</a>
+	<img src="${path1 }/img/logo/logo_on.png">
+	<h1>관리자로 로그인 중 입니다</h1>
 	</c:if>
 
   <a href="${path1 }/NoticeList.do">공지사항</a>
+  <h4>우측에 보이는 메뉴를 이용하여 둘러볼 수 있습니다</h4>
+  <h4>첫번째 버튼 : 홈으로</h4>
+  <h4>두번째 버튼 : 상품메뉴</h4>
+  <h4>세번째 버튼 : 공지사항</h4>
+  <h4>네번째 버튼 : 장바구니</h4>
+  <h4>다섯번째 버튼 : 나의 구매내역 및 배송현황</h4>
+  <h4>여섯번째 버튼 : 자주묻는 질문</h4>
+  <h4>7,8버튼 : 최상단,최하단 으로</h4>
+  <hr>
+  <h4>이 프로젝트는 최대한 반응형에 맞춰 만들어 봤던 프로젝트 입니다</h4>
+  
 </div>
 <%@ include file="/footer.jsp" %>
 </body>

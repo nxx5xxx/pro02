@@ -78,7 +78,7 @@ input{width:100%}
 		</tr>
 		<tr>
 			<th><label for="ccode">카테고리코드</label></th>
-			<td><input type="text" name="ccode" id="ccode" value="${product.ccode}" placeholder="01닌텐도02플스03엑스박스/01기타02액션03총04RPG/04기타01조이스틱02주변기기03완구" required></td>
+			<td><input type="text" name="ccode" id="ccode" value="${product.ccode}" placeholder="01닌텐도02플스03엑스박스/00기타01액션02총03RPG/04기타01조이스틱02주변기기03완구" required></td>
 		</tr>
 		<tr>
 				<c:if test="${product.img == 'img/proimg/null'}">

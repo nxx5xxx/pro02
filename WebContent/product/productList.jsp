@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글</title>
+<title>상품목록</title>
 <%@ include file="/common.jsp" %>
 <style>
 .table_wrap {display : block; text-align:center;  margin-bottom:5vw;}

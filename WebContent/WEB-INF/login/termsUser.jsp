@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>메인페이지</title>
+<title>회원가입약관</title>
 <%@ include file="/common.jsp" %>
 <style>
 textarea {resize: none;}

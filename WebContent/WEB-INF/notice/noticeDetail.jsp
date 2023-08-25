@@ -16,7 +16,7 @@ th {text-align: right; border-bottom:1px solid grey}
 td {text-align: left; border-bottom:1px solid grey}
 th,td {padding:1.1vh}
 input{width:100%}
-.td_min {min-height:55vh}
+.td_min {min-height:55vh ; background-color:white;}
 </style>
 
 </head>
@@ -37,7 +37,7 @@ input{width:100%}
 		</tr>
 		<tr>
 			<th style="vertical-align:top">내용</th>
-			<td colspan="3"><div class="td_min">${note.content}</div></td>
+			<td colspan="3"><pre class="td_min">${note.content}</pre></td>
 		</tr>
 		<tr>
 			<th>첨부파일</th>

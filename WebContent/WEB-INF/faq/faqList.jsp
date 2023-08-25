@@ -48,8 +48,9 @@
 				</li>
 				</c:if>	
 			</ul>
-			
+			<c:if test="${id=='admin' }">
 			<input type="button" value="FAQ등록" onclick="location.href='${path1}/GoInsertFaq.do'">
+			</c:if>
 		</div>
 </div>
 <%@ include file="/footer.jsp" %>

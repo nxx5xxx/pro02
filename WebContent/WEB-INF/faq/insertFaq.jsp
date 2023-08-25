@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항쓰기</title>
+<title>FaQ등록</title>
 <%@ include file="/common.jsp" %>
 <style>
 textarea {resize : none; width:100%}

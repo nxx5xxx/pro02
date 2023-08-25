@@ -96,7 +96,6 @@ th,td {padding:1.1vh}
 			</c:forEach>
 		</tbody>
 		</table>
-		<a href="${path1 }/GoBuy.do?id=${id}" style="font-size:18px ; line-height:50px">구매하기</a>
 		<script>
 		//관리자 배송상태 변경
 		function changepost(numb,onum){

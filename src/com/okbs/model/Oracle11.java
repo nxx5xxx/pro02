@@ -10,7 +10,7 @@ public class Oracle11 {
 	static String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	static String user = "pro02";
 	static String password = "1234";
-		final static String NOTICE_SELECT_ALL = "select * from notice order by idx";
+		final static String NOTICE_SELECT_ALL = "select * from notice order by idx desc";
 		final static String NOTICE_SELECT_ONE = "select * from notice where idx=?";
 		final static String NOTICE_READCOUNT_UPDATE = "update notice set cnt=cnt+1 where idx=?";
 		final static String NOTICE_INSERT = "insert into notice values(noti_seq.nextval,?,?,?,?,default,default)";

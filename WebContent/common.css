@@ -17,9 +17,9 @@
 
         /* 우측픽스메뉴바 */
         .fix_menubar {position: fixed; right: 40px; top: 130px; z-index:9999;}
-        .fix_menubar > ul>li>a {background-color: white;display: block;width: 76px;height: 76px;text-indent:-9999px; overflow: hidden; background-size: 76px; background-position: center center; }
+        .fix_menubar > ul>li>a {background-color: white;display: block;width: 7.6vmin;height: 7.6vmin;text-indent:-9999px; overflow: hidden; background-size: 7.6vmin; background-position: center center; }
         .fix_menubar>ul>li>a.item0 {background-image: url("img/rightbar/home.png"); border: 1px solid black;}
-        .fix_menubar > ul>li>label {background-color: white;display: block;width: 76px;height: 76px;text-indent:-9999px; overflow: hidden; background-size: 76px; background-position: center center; margin:0; cursor: grab;}
+        .fix_menubar > ul>li>label {background-color: white;display: block;width: 7.6vmin;height: 7.6vmin;text-indent:-9999px; overflow: hidden; background-size: 7.6vmin; background-position: center center; margin:0; cursor: grab;}
         .fix_menubar>ul>li>label.item1 {background-image: url("img/rightbar/swmenu.png"); border: 1px solid black;}
         .fix_menubar>ul>li>a.item2 {background-image: url("img/rightbar/notice.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item3 {background-image: url("img/rightbar/basket.png");border:1px solid black;}
@@ -27,8 +27,8 @@
         .fix_menubar>ul>li>a.item5 {background-image: url("img/rightbar/qa.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item6 {background-image: url("img/rightbar/faq.png");border:1px solid black;}
         .fix_menubar>ul>li>a.item7 {background-image: url("img/rightbar/arrow_up.png");border:1px solid black;}
-        .fix_menubar>ul>li>a.item8 {background-image: url("img/rightbar/arrow_down.png");border:1px solid black;transition-duration: 1s;}
-	
+        .fix_menubar>ul>li>a.item8 {background-image: url("img/rightbar/arrow_down.png");border:1px solid black;}
+		/* transition-duration: 1s; 애니메이션속도  */
 		
 		
 		.sub {display :none;}

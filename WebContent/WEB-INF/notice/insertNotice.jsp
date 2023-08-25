@@ -38,7 +38,7 @@ accept="*.pdf, *png, *.jpg" 이걸쓸경우  이파일들만 가능하다는 의
 <body>
 <div class="wrap_bt">
 	<div class="table_wrap">
-	<h1>자주묻는질문</h1>
+	<h1>공지사항 등록</h1>
 	<form action="${path1 }/InsertNotice.do" method="post" enctype="multipart/form-data">
 		<table>
 		<tr>	
