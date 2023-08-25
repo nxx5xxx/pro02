@@ -368,3 +368,9 @@ insert into faq values('70002','상품관련','판매하는 제품이 새 제품
 모든 제품은 미개봉, 새 제품, 정식 발매 품목입니다.');
 
 select * from (select * from faq order by fno desc) where rownum=1;
+
+select * from buy;
+--alter table buy add constraint deletecons foreign key (pcode) references product(pcode) on delete cascade;
+delete from product where pcode='30006' ;
+delete from buy where pcode='30006';
+

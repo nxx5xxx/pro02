@@ -24,9 +24,13 @@
 <div class="wrap_bt" style="text-align:center">
 	<%-- <h2>제작자 : ${author }</h2> --%>
 	<h1 style="text-align:center">${alert }</h1>
-	<c:if test="${id=='admin' }">
 	<img src="${path1 }/img/logo/logo_on.png">
+	
+	<c:if test="${id=='admin' }">
 	<h1>관리자로 로그인 중 입니다</h1>
+	</c:if>
+	<c:if test="${id!='admin' }">
+	<h1>로그아웃 상태 입니다</h1>
 	</c:if>
 
   <a href="${path1 }/NoticeList.do">공지사항</a>
@@ -40,6 +44,8 @@
   <h4>7,8버튼 : 최상단,최하단 으로</h4>
   <hr>
   <h4>이 프로젝트는 최대한 반응형에 맞춰 만들어 봤던 프로젝트 입니다</h4>
+  <h4>자세한 작업 내역은  <a href="https://github.com/nxx5xxx/pro02/blob/master/readme.md">readme.md</a>를 참조해주세요</h4>
+  
   
 </div>
 <%@ include file="/footer.jsp" %>
